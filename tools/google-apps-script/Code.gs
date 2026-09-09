@@ -1,11 +1,11 @@
-const SPREADSHEET_ID = '1hUNqA5ywL75YmRH-PwZ4K-_zSIpN75C8SFjgsQ9vtTg';
+const SPREADSHEET_ID = '1mEVtl-VkfA0nzFCS-w9KuZGnA0tyZP2A-MkG_M928Hg';
 const SOURCE_SHEET = '광고용';
 const OUTPUT_SHEET = '사이트용상품';
-const FLAGS_URL = 'https://raw.githubusercontent.com/eomjinseong-art/B-cat-Cpang/main/data/sheet-flags.json';
+const FLAGS_URL = 'https://raw.githubusercontent.com/eomjinseong-art/surfwikikoreacpang/main/data/sheet-flags.json';
 const RED = '#FEE2E2';
 const WHITE = '#FFFFFF';
-const FALLBACK_MISSING = [7, 20, 24, 69, 84, 86, 95, 96];
-const FALLBACK_DUPLICATES = [4, 16, 18, 25, 26, 28, 41, 42, 48, 54, 58, 62, 66, 87, 90];
+const FALLBACK_MISSING = [];
+const FALLBACK_DUPLICATES = [];
 
 function onOpen() {
   SpreadsheetApp.getUi()

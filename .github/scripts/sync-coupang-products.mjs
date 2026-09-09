@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const repo = process.cwd();
-const sheetUrl = 'https://docs.google.com/spreadsheets/d/1hUNqA5ywL75YmRH-PwZ4K-_zSIpN75C8SFjgsQ9vtTg/gviz/tq?tqx=out:csv&sheet=%EA%B4%91%EA%B3%A0%EC%9A%A9';
+const sheetUrl = 'https://docs.google.com/spreadsheets/d/1mEVtl-VkfA0nzFCS-w9KuZGnA0tyZP2A-MkG_M928Hg/gviz/tq?tqx=out:csv&sheet=%EA%B4%91%EA%B3%A0%EC%9A%A9';
 const imageDir = path.join(repo, 'images', 'products');
 const productsPath = path.join(repo, 'data', 'products.json');
 const sheetExportPath = path.join(repo, 'data', 'sheet-update.csv');
@@ -22,7 +22,7 @@ const imageIndex = firstIndex(index, ['상품 이미지 url', '이미지 url']);
 const descriptionIndex = firstIndex(index, ['상품 한줄설명', '상품 설명']);
 
 const catalogOnly = process.argv.includes('--catalog-only');
-const appsScriptUrl = 'https://script.google.com/macros/s/AKfycbz2LjDNSCMzMrRu_nCXv36VHDaaHBFYXhGqeIZPB2DzxA1F9j8x_NrI09jYTizpPAkG/exec';
+const appsScriptUrl = '';
 const flagsPath = path.join(repo, 'data', 'sheet-flags.json');
 const failedPath = path.join(repo, 'data', 'scrape-failed.json');
 const existing = await loadExistingProducts();
@@ -71,7 +71,7 @@ for (const row of rows.slice(1)) {
   if (!title || isBlockedTitle(title)) {
     title = previous?.product?.title && !isFallbackTitle(previous.product.title, id)
       ? previous.product.title
-      : `고양이 용품 추천 ${id}`;
+      : `서핑 용품 추천 ${id}`;
   }
 
   let imageUrl = hasJpg
@@ -230,6 +230,10 @@ async function saveSiteProducts(list, missing, duplicates) {
 }
 
 async function notifyGoogleSheet(missing, duplicates) {
+  if (!appsScriptUrl) {
+    console.log('Apps Script 웹앱 URL이 없어 시트 빨강 표시는 건너뜁니다.');
+    return;
+  }
   const url = `${appsScriptUrl}?action=mark&missing=${missing.join(',')}&duplicates=${duplicates.join(',')}`;
   try {
     const response = await fetch(url, { redirect: 'follow', signal: AbortSignal.timeout(30000) });
@@ -311,7 +315,7 @@ function parseNaverResult(html, productId) {
     for (const text of candidates) {
       if (text.length < 8 || text.length > 90 || !/[가-힣]{2,}/.test(text) || skip.test(text)) continue;
       let score = 0;
-      if (/고양이|캣닢|캣타워|스크래|모래|사료|츄르|화장실|장난감|그루밍|배변/.test(text)) score += 6;
+      if (/서핑|보드|슈트|왁스|리쉬|핀|래시가드|덱패드|트랙션|소프트탑|롱보드|숏보드|웻슈트/.test(text)) score += 6;
       if (/,\s*\d+\s*개/.test(text)) score += 4;
       if (text.length >= 16) score += 2;
       if (/가격비교|최저가 \d/.test(text)) score -= 4;
@@ -401,7 +405,7 @@ async function loadFailedIds() {
     const parsed = JSON.parse(await fs.readFile(failedPath, 'utf8'));
     return new Set(parsed);
   } catch {
-    return new Set([7, 20, 24, 28]);
+    return new Set();
   }
 }
 
@@ -410,24 +414,24 @@ function isBlockedTitle(value) {
 }
 
 function isFallbackTitle(value, id) {
-  return value === `고양이 용품 추천 ${id}`;
+  return value === `서핑 용품 추천 ${id}`;
 }
 
 function isWeakTitle(value) {
-  return /^(고양이 용품|쇼핑|쿠팡|상품|캣타워\/스크래쳐)$/.test(value || '')
+  return /^(서핑 용품|고양이 용품|쇼핑|쿠팡|상품|캣타워\/스크래쳐)$/.test(value || '')
     || /쿠스피|가격 데이터|총 중량|주원료|도착 보장|^Keep에/.test(value || '')
     || isJunkTitle(value);
 }
 
 function isJunkTitle(value) {
-  return /지식iN|오일필터|현대모비스|그랜드스타렉스|르노코리아|글래스런|모래요 여러분|궁금한 것은|순정부품/.test(value || '');
+  return /지식iN|오일필터|현대모비스|그랜드스타렉스|르노코리아|글래스런|글라스런|모래요 여러분|궁금한 것은|순정부품|쉐보레|선루프|브레이크패드|캠마그넷|에어컨필터|헬릭스 안테나|크루즈 스위치|분수매트|후드티|와이드팬츠|스케이드|해루질|유사한 상품을 노출|소재: 합성섬유|사용대상 구분|GM 순정/.test(value || '');
 }
 
 function displayTitle(raw, id, category) {
   const cleaned = sanitizeTitle(raw);
   if (cleaned && !isJunkTitle(cleaned) && !isWeakTitle(cleaned)) return cleaned;
   if (category && category !== '기타') return `${category} 추천`;
-  return `고양이 용품 추천 ${id}`;
+  return `서핑 용품 추천 ${id}`;
 }
 
 function sanitizeTitle(title) {
@@ -445,6 +449,9 @@ function sanitizeTitle(title) {
     .replace(/\d+%[\d,]*(?:\(10g당.*)?$/g, '')
     .replace(/(\S)\d{1,3}(?:,\d{3})+$/g, '$1')
     .replace(/(\d(?:\.\d)?L)\d[\d,]*/g, '$1')
+    .replace(/\s{2,}/g, ' ')
+    .replace(/\d{2,3},\d{3}.*$/, '')
+    .replace(/[\d$Hw%,]+\d{2,}$/g, '')
     .replace(/\s{2,}/g, ' ')
     .trim();
 }
@@ -507,7 +514,7 @@ function parseCsv(input) {
 
 function fallbackImage(id) {
   const hue = (id * 37) % 360;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(${hue},75%,88%)"/><stop offset="1" stop-color="hsl(${(hue + 35) % 360},80%,65%)"/></linearGradient></defs><rect width="800" height="600" fill="url(#g)"/><circle cx="400" cy="300" r="150" fill="#fff" opacity=".45"/><path d="M315 270l-35-95 85 50 35-12 35 12 85-50-35 95c0 75-40 115-85 115s-85-40-85-115z" fill="#6b4f3b"/><circle cx="360" cy="285" r="10" fill="#fff"/><circle cx="440" cy="285" r="10" fill="#fff"/><path d="M390 320q10 10 20 0M270 325l-75-10m75 35l-75 15m530-40l75-10m-75 35l75 15" stroke="#6b4f3b" stroke-width="7" fill="none"/><text x="400" y="535" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#5b4030">CAT GOODS ${id}</text></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(${hue},70%,88%)"/><stop offset="1" stop-color="hsl(${(hue + 40) % 360},65%,55%)"/></linearGradient></defs><rect width="800" height="600" fill="url(#g)"/><ellipse cx="400" cy="340" rx="220" ry="70" fill="#fff" opacity=".35"/><path d="M120 360c80-40 160-20 240 10s170 20 250-30" stroke="#0f766e" stroke-width="10" fill="none"/><path d="M280 250l80 90 20-55 20 55 80-90" stroke="#155e75" stroke-width="12" fill="none"/><text x="400" y="535" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#134e4a">SURF GOODS ${id}</text></svg>`;
 }
 
 async function fileExists(filePath) {
@@ -522,30 +529,26 @@ async function fileExists(filePath) {
 function classifyCategory(value, title) {
   if (value && value !== '기타') return value;
   const text = `${value} ${title}`.toLowerCase();
-  if (/간식|츄르|트릿|스낵|비스킷|젤리/.test(text)) return '고양이 간식';
-  if (/급식기|급수기|급수식기/.test(text)) return '기타';
-  if (/사료|키튼|로얄캐닌|건식사료/.test(text)) return '고양이 사료';
-  if (/스크래쳐|스크래처|스크래치|캣타워|하우스|숨숨집|방석|쿠션/.test(text)) {
-    return '스크래처 및 캣타워';
-  }
-  if (/화장실|배변|탈취|위생|리터락커|분변통|매트|트레이|배변 봉투/.test(text)) {
-    return '위생 및 화장실 용품';
-  }
-  if (/모래|벤토나이트|실리카겔|두부/.test(text)) return '고양이 모래';
-  if (/장난감|낚싯대|공|터널|캣닢|볼링|인형/.test(text)) return '장난감';
-  if (/브러시|빗|샴푸|발톱|그루밍|목욕|티슈/.test(text)) return '그루밍';
+  if (/왁스|덱패드|트랙션|그립|콤/.test(text) && !/모자/.test(text)) return '왁스/그립';
+  if (/리쉬|leash|헬멧|리프부츠|레일세이버/.test(text)) return '리쉬/안전';
+  if (/모자|버킷햇|서핑햇|선스틱|선크림|선글라스|방수팩/.test(text)) return '액세서리';
+  if (/슈트|웻슈트|래시가드|래쉬가드|스프링슈트|네오프렌|부츠|글러브/.test(text)) return '슈트/래시가드';
+  if (/보드백|캐리어|스트랩|휠백|여행가방|보드가방|월마운트|벽걸이/.test(text)) return '가방/캐리어';
+  if (/수리|딩|레진|핀키|핀 키|솔라/.test(text)) return '관리/수리';
+  if (/핀|소프트탑|폼보드|숏보드|롱보드|미드랭스|서프보드|보드/.test(text)) return '보드/핀';
+  if (/선글라스|타월|방수팩|액세서리|파우치/.test(text)) return '액세서리';
   return '기타';
 }
 
 function categoryDescription(category) {
   return {
-    '고양이 사료': '고양이의 건강한 식사를 위한 추천 사료입니다.',
-    '고양이 모래': '쾌적한 배변 환경을 위한 고양이 모래입니다.',
-    '고양이 간식': '맛있는 간식으로 건강한 보상 시간을 만들어 주세요.',
-    '스크래처 및 캣타워': '휴식과 발톱 관리를 돕는 공간입니다.',
-    '위생 및 화장실 용품': '쾌적한 위생과 배변 환경을 위한 용품입니다.',
-    장난감: '지루함을 덜어 주는 즐거운 놀이 용품입니다.',
-    그루밍: '고양이의 위생과 털 관리를 위한 용품입니다.',
-    기타: '고양이와 집사에게 유용한 생활 추천 용품입니다.'
-  }[category] || '고양이와 집사를 위한 추천 용품입니다.';
+    '보드/핀': '체중과 실력에 맞춰 고른 보드와 핀입니다.',
+    '슈트/래시가드': '계절과 수온에 맞춘 보온·자외선 차단 용품입니다.',
+    '왁스/그립': '미끄럼을 줄이는 왁스와 덱패드입니다.',
+    '리쉬/안전': '보드와 몸을 지키는 리쉬와 안전 용품입니다.',
+    '가방/캐리어': '이동과 보관 때 보드를 보호하는 가방입니다.',
+    '관리/수리': '딩 수리와 핀 관리를 위한 용품입니다.',
+    액세서리: '세션을 편하게 만드는 작은 용품입니다.',
+    기타: '서핑에 유용한 추천 용품입니다.'
+  }[category] || '서핑을 위한 추천 용품입니다.';
 }

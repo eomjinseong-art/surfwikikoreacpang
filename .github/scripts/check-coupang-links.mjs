@@ -1,6 +1,6 @@
 import { appendFile } from 'node:fs/promises';
 
-const sheetUrl = 'https://docs.google.com/spreadsheets/d/1hUNqA5ywL75YmRH-PwZ4K-_zSIpN75C8SFjgsQ9vtTg/gviz/tq?tqx=out:csv&sheet=%EA%B4%91%EA%B3%A0%EC%9A%A9';
+const sheetUrl = 'https://docs.google.com/spreadsheets/d/1mEVtl-VkfA0nzFCS-w9KuZGnA0tyZP2A-MkG_M928Hg/gviz/tq?tqx=out:csv&sheet=%EA%B4%91%EA%B3%A0%EC%9A%A9';
 const csv = await (await fetch(sheetUrl)).text();
 const rows = parseCsv(csv);
 const headers = rows[0].map(header => header.trim().toLowerCase());
