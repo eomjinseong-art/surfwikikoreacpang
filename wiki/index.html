@@ -41,7 +41,7 @@
   <div class="fixed inset-x-0 bottom-0 z-40">
     <div class="flex border-t border-cyan-100 bg-cyan-50">
       <a id="footerWow" href="https://link.coupang.com/a/gU16lCobu0" target="_blank" rel="noopener sponsored" class="flex-1 py-2 text-center text-[11px] font-semibold text-teal-700">로켓와우</a>
-      <a id="footerStay" href="https://surfwikikorea.vercel.app/?tab=stays" target="_blank" rel="noopener" class="flex-1 border-l border-cyan-100 py-2 text-center text-[11px] font-semibold text-teal-700">서핑 숙소</a>
+      <a id="footerStay" href="https://link.coupang.com/a/gU3EgPN6wS" target="_blank" rel="noopener sponsored" class="flex-1 border-l border-cyan-100 py-2 text-center text-[11px] font-semibold text-teal-700">서핑 숙소</a>
     </div>
     <a href="https://surfwikikorea.vercel.app/" target="_blank" rel="noopener" class="block bg-cyan-600 py-3 text-center text-sm font-bold text-white shadow-[0_-8px_24px_rgba(0,0,0,.12)]" style="padding-bottom: max(0.75rem, env(safe-area-inset-bottom))">서프위키Ai 바로가기</a>
   </div>
@@ -50,21 +50,25 @@
     const state = {
       guides: [],
       category: new URLSearchParams(location.search).get('cat') || '전체',
-      blog: 'https://surfwikikorea.vercel.app/'
+      blog: 'https://surfwikikorea.vercel.app/',
+      lodging: 'https://link.coupang.com/a/gU3EgPN6wS'
     };
     const $ = id => document.getElementById(id);
     fetch('../data/config.json').then(r => r.json()).then(config => {
       $('headerLink').href = config.featuredLink;
       $('headerLink').textContent = config.featuredLabel;
       if (config.rocketWowLink) $('footerWow').href = config.rocketWowLink;
-      if (config.lodgingLink) $('footerStay').href = config.lodgingLink;
+      if (config.lodgingLink) {
+        state.lodging = config.lodgingLink;
+        $('footerStay').href = config.lodgingLink;
+      }
     });
     fetch('./guides.json').then(r => r.json()).then(data => {
       state.guides = data.guides || [];
       state.blog = data.blog || state.blog;
       $('blogCta').href = state.blog;
       $('blogTopics').innerHTML = (data.blogTopics || []).map(item => {
-        const href = item.title === '서핑 숙소' ? `${state.blog.replace(/\/$/, '')}/?tab=stays` : state.blog;
+        const href = item.title === '서핑 숙소' ? state.lodging : state.blog;
         return `<li><a href="${escapeHtml(href)}" target="_blank" rel="noopener" class="flex items-baseline justify-between gap-3 rounded-xl bg-sky-50 px-3 py-3 hover:bg-cyan-50"><span class="text-sm font-bold">${escapeHtml(item.title)}</span><span class="text-xs text-slate-400">${escapeHtml(item.note || '')}</span></a></li>`;
       }).join('');
       if (![...new Set(state.guides.map(g => g.wikiCategory)), '전체'].includes(state.category)) {
