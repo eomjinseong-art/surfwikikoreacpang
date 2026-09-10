@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="placeholder">
+  <rect width="640" height="400" fill="#e0f2fe"/>
+  <path d="M0 268c48-28 96-28 144 0s96 28 144 0 96-28 144 0 96 28 144 0 96-28 144 0v132H0z" fill="#67e8f9"/>
+  <path d="M0 304c48-24 96-24 144 0s96 24 144 0 96-24 144 0 96 24 144 0 96-24 144 0v96H0z" fill="#22d3ee"/>
+  <circle cx="320" cy="148" r="46" fill="#0d9488"/>
+  <path d="M292 148h56M320 120v56" stroke="#ecfeff" stroke-width="10" stroke-linecap="round"/>
+  <text x="320" y="232" text-anchor="middle" fill="#0f766e" font-family="ui-sans-serif, system-ui, sans-serif" font-size="28" font-weight="800">이미지 준비중</text>
+</svg>

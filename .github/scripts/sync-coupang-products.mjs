@@ -22,7 +22,7 @@ const imageIndex = firstIndex(index, ['상품 이미지 url', '이미지 url']);
 const descriptionIndex = firstIndex(index, ['상품 한줄설명', '상품 설명']);
 
 const catalogOnly = process.argv.includes('--catalog-only');
-const appsScriptUrl = '';
+const appsScriptUrl = 'https://script.google.com/macros/s/AKfycby15kafTWWfWOZLWC74H6-CZkmrcGOUnXTjXUnR9iFTAh8uas9OF_VaH4WuOO7C3FE2cg/exec';
 const flagsPath = path.join(repo, 'data', 'sheet-flags.json');
 const failedPath = path.join(repo, 'data', 'scrape-failed.json');
 const existing = await loadExistingProducts();

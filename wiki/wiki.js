@@ -1,5 +1,7 @@
 (function () {
   const $ = id => document.getElementById(id);
+  const PLACEHOLDER = '../images/placeholder.svg';
+  const SURF_CAT = '서핑 입문';
   function articleSlug() {
     const last = (location.pathname.split('/').filter(Boolean).pop() || '').replace(/\.html$/, '');
     if (last && last !== 'article' && last !== 'wiki') return last;
@@ -42,10 +44,19 @@
       return `](${blog})`;
     });
   }
+  function highlightNav(isSurf) {
+    const gear = $('navGear');
+    const surf = $('navSurf');
+    if (!gear || !surf) return;
+    gear.className = isSurf ? 'text-slate-400 hover:text-teal-600' : 'text-slate-900';
+    surf.className = isSurf ? 'text-slate-900' : 'text-slate-400 hover:text-teal-600';
+  }
   const slug = articleSlug();
   fetch('../data/config.json').then(r => r.json()).then(config => {
     $('headerLink').href = config.featuredLink;
     $('headerLink').textContent = config.featuredLabel;
+    if (config.rocketWowLink && $('footerWow')) $('footerWow').href = config.rocketWowLink;
+    if (config.lodgingLink && $('footerStay')) $('footerStay').href = config.lodgingLink;
   }).catch(() => {});
   Promise.all([
     fetch('./guides.json').then(r => r.json()),
@@ -58,14 +69,21 @@
     if (!guide) throw new Error('unknown');
     const wikiSlugs = new Set((data.guides || []).map(item => item.slug));
     const blog = data.blog || 'https://surfwikikorea.vercel.app/';
-    document.title = `${guide.title} | 용품가이드`;
+    const isSurf = guide.wikiCategory === SURF_CAT;
+    const sectionLabel = isSurf ? '서핑가이드' : '용품가이드';
+    document.title = `${guide.title} | ${sectionLabel}`;
     const meta = $('metaDesc');
     if (meta) meta.setAttribute('content', guide.description);
+    if ($('crumbHome')) {
+      $('crumbHome').textContent = sectionLabel;
+      $('crumbHome').href = isSurf ? './?cat=서핑 입문' : './';
+    }
     $('crumbCat').textContent = `· ${guide.wikiCategory}`;
     $('pageTitle').textContent = guide.title;
     $('pageDesc').textContent = guide.description;
     $('pageMeta').textContent = `읽는 시간 약 ${guide.readMinutes}분`;
     $('disclaimer').textContent = data.disclaimer || '';
+    highlightNav(isSurf);
     marked.setOptions({ gfm: true, breaks: false });
     $('content').innerHTML = marked.parse(rewriteLinks(parseMarkdown(raw), wikiSlugs, blog));
     const used = new Set();
@@ -99,13 +117,13 @@
       $('related').classList.remove('hidden');
       $('relatedGroups').innerHTML = groups.map(group =>
         `<div><h3 class="mb-3 text-sm font-black text-teal-600">#${escapeHtml(group.category)}</h3><div class="grid grid-cols-2 gap-3 sm:grid-cols-4">${group.items.map(item =>
-          `<a href="${escapeHtml(item.product.coupangUrl)}" target="_blank" rel="noopener sponsored" class="overflow-hidden rounded-2xl border border-sky-100 bg-white text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md"><img src="${escapeHtml(imageSrc(item))}" alt="${escapeHtml(item.product.title)}" class="h-40 w-full object-cover" loading="lazy"><div class="p-3"><span class="text-[11px] font-bold text-teal-600">#${escapeHtml(item.category || '추천')}</span><h3 class="mt-1 line-clamp-2 text-sm font-bold">${escapeHtml(item.product.title)}</h3><p class="mt-2 line-clamp-2 text-xs leading-5 text-slate-500">${escapeHtml(item.description || item.product.description || '서핑을 위한 추천 용품')}</p></div></a>`
+          `<a href="${escapeHtml(item.product.coupangUrl)}" target="_blank" rel="noopener sponsored" class="overflow-hidden rounded-2xl border border-sky-100 bg-white text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md"><img src="${escapeHtml(imageSrc(item))}" alt="${escapeHtml(item.product.title)}" class="h-40 w-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='${PLACEHOLDER}'"><div class="p-3"><span class="text-[11px] font-bold text-teal-600">#${escapeHtml(item.category || '추천')}</span><h3 class="mt-1 line-clamp-2 text-sm font-bold">${escapeHtml(item.product.title)}</h3><p class="mt-2 line-clamp-2 text-xs leading-5 text-slate-500">${escapeHtml(item.description || item.product.description || '서핑을 위한 추천 용품')}</p></div></a>`
         ).join('')}</div></div>`
       ).join('');
     });
   }).catch(() => {
     $('pageTitle').textContent = '글을 찾지 못했습니다';
-    $('pageDesc').textContent = '용품가이드 목록으로 돌아가 다른 글을 골라 주세요.';
+    $('pageDesc').textContent = '가이드 목록으로 돌아가 다른 글을 골라 주세요.';
     $('content').innerHTML = '<p><a href="./">가이드 목록으로</a></p>';
     $('tocBox').classList.add('hidden');
   });

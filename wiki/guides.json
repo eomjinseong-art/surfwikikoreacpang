@@ -1,6 +1,6 @@
 {
   "blog": "https://surfwikikorea.vercel.app/",
-  "disclaimer": "이 글은 일반적인 용품 고르기 정보입니다. 바다·리프·조류는 위험할 수 있습니다. 수영이 되고, 현지 규칙과 자신의 실력을 먼저 확인하세요. 스팟과 파도 정보는 서프위키Ai를 보세요.",
+  "disclaimer": "이 글은 일반적인 용품 고르기와 초보 서핑 안내입니다. 바다·리프·조류는 위험할 수 있습니다. 수영이 되고, 현지 규칙과 자신의 실력을 먼저 확인하세요. 스팟과 파도 정보는 서프위키Ai를 보세요. 응급 상황이 있으면 안전요원이나 119에 알리세요.",
   "blogTopics": [
     { "title": "전국 스팟 지도", "note": "100개 해변을 한눈에" },
     { "title": "실시간 파도", "note": "오늘 컨디션 점수" },
@@ -87,6 +87,70 @@
       "wikiCategory": "빠른 찾기",
       "readMinutes": 8,
       "productCategories": ["보드/핀", "슈트/래시가드"]
+    },
+    {
+      "slug": "11-first-lesson",
+      "title": "첫 강습 전에",
+      "description": "첫날 목표, 강습 고르기, 가져갈 것과 하지 말 일.",
+      "wikiCategory": "서핑 입문",
+      "readMinutes": 8,
+      "productCategories": ["슈트/래시가드", "리쉬/안전"]
+    },
+    {
+      "slug": "12-lineup-manner",
+      "title": "라인업 매너",
+      "description": "우선권, 스네이킹, 패들 아웃. 사람을 치지 않는 대기열.",
+      "wikiCategory": "서핑 입문",
+      "readMinutes": 7,
+      "productCategories": ["리쉬/안전"]
+    },
+    {
+      "slug": "13-paddle-popup",
+      "title": "패들과 일어서기",
+      "description": "엎드리는 위치, 획, 흰 거품에서 한 번에 일어나는 연습.",
+      "wikiCategory": "서핑 입문",
+      "readMinutes": 8,
+      "productCategories": ["보드/핀", "왁스/그립"]
+    },
+    {
+      "slug": "14-fall-safety",
+      "title": "넘어졌을 때",
+      "description": "머리 보호, 홀드다운, 보드를 놓쳤을 때, 얕은 물.",
+      "wikiCategory": "서핑 입문",
+      "readMinutes": 7,
+      "productCategories": ["리쉬/안전"]
+    },
+    {
+      "slug": "15-rip-current",
+      "title": "이안류와 안전",
+      "description": "빠지는 흐름을 알아보는 법, 걸렸을 때, 혼자 들어가지 않기.",
+      "wikiCategory": "서핑 입문",
+      "readMinutes": 8,
+      "productCategories": ["리쉬/안전", "슈트/래시가드"]
+    },
+    {
+      "slug": "16-read-wave",
+      "title": "파도 읽기 입문",
+      "description": "흰 거품과 그린웨이브, 바람, 들어갈지 말지. 실시간은 서프위키Ai.",
+      "wikiCategory": "서핑 입문",
+      "readMinutes": 8,
+      "productCategories": ["보드/핀"]
+    },
+    {
+      "slug": "17-korea-season",
+      "title": "한국 바다 계절",
+      "description": "수온과 슈트, 계절별 함정, 초보가 고를 해변.",
+      "wikiCategory": "서핑 입문",
+      "readMinutes": 7,
+      "productCategories": ["슈트/래시가드", "왁스/그립"]
+    },
+    {
+      "slug": "18-after-session",
+      "title": "세션이 끝난 뒤",
+      "description": "몸과 슈트·보드를 말리고, 다음 세션을 남기는 루틴.",
+      "wikiCategory": "서핑 입문",
+      "readMinutes": 6,
+      "productCategories": ["관리/수리", "가방/캐리어"]
     }
   ]
 }

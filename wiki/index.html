@@ -3,31 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="서핑 용품을 상황별로 고르는 용품가이드">
-  <title>용품가이드 | 서핑용품</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+  <meta name="description" content="서핑 용품과 초보 서핑을 상황별로 고르는 가이드">
+  <title>가이드 | 서핑용품</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-sky-50 text-slate-800" style="font-family:'Noto Sans KR', sans-serif">
+<body class="bg-sky-50 font-sans text-slate-800">
   <header class="sticky top-0 z-20 border-b border-sky-100 bg-white/95 backdrop-blur">
     <div class="mx-auto max-w-5xl px-4 py-3">
       <div class="flex items-center justify-between gap-3">
-        <a href="../" class="text-2xl font-black tracking-wide text-teal-600" style="font-family:'Black Han Sans', sans-serif">서핑용품 <span class="hidden text-base font-medium tracking-normal text-slate-400 sm:inline">SURF WIKI</span></a>
+        <a href="../" class="text-2xl font-black tracking-wide text-teal-600">서핑용품 <span class="hidden text-base font-medium tracking-normal text-slate-400 sm:inline">SURF WIKI</span></a>
         <a id="headerLink" href="#" target="_blank" rel="noopener" class="shrink-0 rounded-full bg-cyan-600 px-3 py-2 text-xs font-bold text-white">오늘의 특가</a>
       </div>
       <nav class="mt-2 flex gap-4 text-sm font-bold">
         <a href="../" class="text-slate-400 hover:text-teal-600">서핑용품</a>
-        <a href="./" class="text-slate-900">용품가이드</a>
+        <a id="navGear" href="./" class="text-slate-400 hover:text-teal-600">용품가이드</a>
+        <a id="navSurf" href="./?cat=서핑 입문" class="text-slate-400 hover:text-teal-600">서핑가이드</a>
       </nav>
     </div>
   </header>
   <main class="mx-auto max-w-5xl px-4 pb-40">
     <section class="py-8">
-      <p class="mb-2 text-sm font-bold text-teal-600">용품가이드</p>
-      <h1 class="text-3xl font-black leading-tight sm:text-4xl">사는 법만 모아 둔 서핑 용품</h1>
-      <p class="mt-3 max-w-xl text-sm leading-6 text-slate-500">보드·슈트·왁스·리쉬를 고를 때 볼 스펙과 순서. 스팟과 파도는 서프위키Ai에서 이어집니다.</p>
+      <p id="heroEyebrow" class="mb-2 text-sm font-bold text-teal-600">가이드</p>
+      <h1 id="heroTitle" class="text-3xl font-black leading-tight sm:text-4xl">사는 법과 타는 법을 같이</h1>
+      <p id="heroDesc" class="mt-3 max-w-xl text-sm leading-6 text-slate-500">용품 고르기와 초보 서핑 입문. 스팟과 실시간 파도는 서프위키Ai에서 이어집니다.</p>
     </section>
     <nav class="sticky top-[5.5rem] z-10 -mx-4 mb-5 border-b border-sky-100 bg-sky-50/95 px-4 py-2 backdrop-blur">
       <div id="wikiCats" class="flex gap-2 overflow-x-auto pb-1"></div>
@@ -42,30 +40,68 @@
   </main>
   <div class="fixed inset-x-0 bottom-0 z-40">
     <div class="flex border-t border-cyan-100 bg-cyan-50">
-      <a href="https://link.coupang.com/a/gKenl0nyO4" target="_blank" rel="noopener sponsored" class="flex-1 py-2 text-center text-[11px] font-semibold text-teal-700">로켓와우</a>
-      <a href="https://link.coupang.com/a/gTxkqIiE4y" target="_blank" rel="noopener sponsored" class="flex-1 border-l border-cyan-100 py-2 text-center text-[11px] font-semibold text-teal-700">서핑 숙소</a>
+      <a id="footerWow" href="https://link.coupang.com/a/gU16lCobu0" target="_blank" rel="noopener sponsored" class="flex-1 py-2 text-center text-[11px] font-semibold text-teal-700">로켓와우</a>
+      <a id="footerStay" href="https://surfwikikorea.vercel.app/?tab=stays" target="_blank" rel="noopener" class="flex-1 border-l border-cyan-100 py-2 text-center text-[11px] font-semibold text-teal-700">서핑 숙소</a>
     </div>
     <a href="https://surfwikikorea.vercel.app/" target="_blank" rel="noopener" class="block bg-cyan-600 py-3 text-center text-sm font-bold text-white shadow-[0_-8px_24px_rgba(0,0,0,.12)]" style="padding-bottom: max(0.75rem, env(safe-area-inset-bottom))">서프위키Ai 바로가기</a>
   </div>
   <script>
-    const state = { guides: [], category: '전체', blog: 'https://surfwikikorea.vercel.app/' };
+    const SURF_CAT = '서핑 입문';
+    const state = {
+      guides: [],
+      category: new URLSearchParams(location.search).get('cat') || '전체',
+      blog: 'https://surfwikikorea.vercel.app/'
+    };
     const $ = id => document.getElementById(id);
     fetch('../data/config.json').then(r => r.json()).then(config => {
       $('headerLink').href = config.featuredLink;
       $('headerLink').textContent = config.featuredLabel;
+      if (config.rocketWowLink) $('footerWow').href = config.rocketWowLink;
+      if (config.lodgingLink) $('footerStay').href = config.lodgingLink;
     });
     fetch('./guides.json').then(r => r.json()).then(data => {
       state.guides = data.guides || [];
       state.blog = data.blog || state.blog;
       $('blogCta').href = state.blog;
-      $('blogTopics').innerHTML = (data.blogTopics || []).map(item =>
-        `<li><a href="${escapeHtml(state.blog)}" target="_blank" rel="noopener" class="flex items-baseline justify-between gap-3 rounded-xl bg-sky-50 px-3 py-3 hover:bg-cyan-50"><span class="text-sm font-bold">${escapeHtml(item.title)}</span><span class="text-xs text-slate-400">${escapeHtml(item.note || '')}</span></a></li>`
-      ).join('');
+      $('blogTopics').innerHTML = (data.blogTopics || []).map(item => {
+        const href = item.title === '서핑 숙소' ? `${state.blog.replace(/\/$/, '')}/?tab=stays` : state.blog;
+        return `<li><a href="${escapeHtml(href)}" target="_blank" rel="noopener" class="flex items-baseline justify-between gap-3 rounded-xl bg-sky-50 px-3 py-3 hover:bg-cyan-50"><span class="text-sm font-bold">${escapeHtml(item.title)}</span><span class="text-xs text-slate-400">${escapeHtml(item.note || '')}</span></a></li>`;
+      }).join('');
+      if (![...new Set(state.guides.map(g => g.wikiCategory)), '전체'].includes(state.category)) {
+        state.category = '전체';
+      }
+      highlightNav();
+      renderHero();
       renderCats();
       renderGuides();
     }).catch(() => {
       $('guideGrid').innerHTML = '<p class="rounded-xl bg-white p-8 text-center text-sm text-slate-400">가이드 목록을 불러오지 못했습니다.</p>';
     });
+    function highlightNav() {
+      const gear = $('navGear');
+      const surf = $('navSurf');
+      const onSurf = state.category === SURF_CAT;
+      gear.className = onSurf ? 'text-slate-400 hover:text-teal-600' : 'text-slate-900';
+      surf.className = onSurf ? 'text-slate-900' : 'text-slate-400 hover:text-teal-600';
+    }
+    function renderHero() {
+      if (state.category === SURF_CAT) {
+        $('heroEyebrow').textContent = '서핑가이드';
+        $('heroTitle').textContent = '초보가 바다에 들어가기 전에';
+        $('heroDesc').textContent = '강습, 라인업, 안전. 스팟과 오늘 파도는 서프위키Ai에서 확인하세요.';
+        document.title = '서핑가이드 | 서핑용품';
+      } else if (state.category === '전체') {
+        $('heroEyebrow').textContent = '가이드';
+        $('heroTitle').textContent = '사는 법과 타는 법을 같이';
+        $('heroDesc').textContent = '용품 고르기와 초보 서핑 입문. 스팟과 실시간 파도는 서프위키Ai에서 이어집니다.';
+        document.title = '가이드 | 서핑용품';
+      } else {
+        $('heroEyebrow').textContent = '용품가이드';
+        $('heroTitle').textContent = '사는 법만 모아 둔 서핑 용품';
+        $('heroDesc').textContent = '보드·슈트·왁스·리쉬를 고를 때 볼 스펙과 순서. 스팟과 파도는 서프위키Ai에서 이어집니다.';
+        document.title = '용품가이드 | 서핑용품';
+      }
+    }
     function cats() {
       return ['전체', ...[...new Set(state.guides.map(g => g.wikiCategory))]];
     }
@@ -79,6 +115,12 @@
       $('wikiCats').querySelectorAll('button').forEach(button => {
         button.addEventListener('click', () => {
           state.category = button.dataset.cat;
+          const url = new URL(location.href);
+          if (state.category === '전체') url.searchParams.delete('cat');
+          else url.searchParams.set('cat', state.category);
+          history.replaceState({}, '', url);
+          highlightNav();
+          renderHero();
           renderCats();
           renderGuides();
         });

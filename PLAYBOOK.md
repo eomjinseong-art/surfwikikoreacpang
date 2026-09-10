@@ -67,7 +67,7 @@ npm run catalog
 
 자리표시 제목은 `서핑 용품 추천 N`이다. 사이트는 jpg가 있고 이 제목이 아닌 행만 보여 준다.
 
-Apps Script 웹앱 URL은 새 시트에 새로 배포한 뒤 `.github/scripts/sync-coupang-products.mjs`의 `appsScriptUrl`에 넣는다. 비어 있으면 빨강 표시만 건너뛴다. 고양이 시트 웹앱을 재사용하지 않는다.
+Apps Script 웹앱 URL은 `.github/scripts/sync-coupang-products.mjs`의 `appsScriptUrl`에 둔다. 고양이 시트 웹앱을 재사용하지 않는다.
 
 ---
 
