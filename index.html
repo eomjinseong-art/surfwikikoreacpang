@@ -5,54 +5,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="서프위키Ai가 고른 서핑 용품 큐레이션">
   <title>서핑용품 | 서프위키Ai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: Inter, "Noto Sans KR", -apple-system, BlinkMacSystemFont, helvetica, "Apple SD Gothic Neo", sans-serif; }
+  </style>
 </head>
-<body class="bg-sky-50 font-sans text-slate-800">
-  <header class="sticky top-0 z-20 border-b border-sky-100 bg-white/95 backdrop-blur">
+<body class="bg-white text-black">
+  <header class="sticky top-0 z-20 border-b border-neutral-200 bg-white">
     <div class="mx-auto max-w-5xl px-4 py-3">
       <div class="flex items-center justify-between gap-3">
-        <a href="./" class="text-2xl font-black tracking-wide text-teal-600">서핑용품 <span class="hidden text-base font-medium tracking-normal text-slate-400 sm:inline">SURF WIKI</span></a>
-        <a id="headerLink" href="#" target="_blank" rel="noopener" class="shrink-0 rounded-full bg-cyan-600 px-3 py-2 text-xs font-bold text-white">오늘의 특가</a>
+        <a href="./" class="text-[22px] font-semibold tracking-[0.18em] text-black">서핑용품 <span class="hidden text-[11px] font-medium tracking-[0.28em] text-neutral-400 sm:inline">SURF WIKI</span></a>
+        <a id="headerLink" href="#" target="_blank" rel="noopener" class="shrink-0 bg-black px-3 py-2 text-[11px] font-medium tracking-wide text-white">오늘의 특가</a>
       </div>
-      <nav class="mt-2 flex gap-4 text-sm font-bold">
-        <a href="./" class="text-slate-900">서핑용품</a>
-        <a href="./wiki/" class="text-slate-400 hover:text-teal-600">용품가이드</a>
-        <a href="./wiki/?cat=서핑 입문" class="text-slate-400 hover:text-teal-600">서핑가이드</a>
+      <nav class="mt-3 flex gap-5 text-[13px] font-medium tracking-wide">
+        <a href="./" class="border-b border-black pb-1 text-black">서핑용품</a>
+        <a href="./wiki/" class="pb-1 text-neutral-400 hover:text-black">용품가이드</a>
+        <a href="./wiki/?cat=서핑 입문" class="pb-1 text-neutral-400 hover:text-black">서핑가이드</a>
       </nav>
     </div>
   </header>
   <main class="mx-auto max-w-5xl px-4 pb-40">
-    <section class="pt-4 pb-3">
-      <p class="mb-1 hidden text-xs font-bold text-teal-600 sm:block">서프위키Ai가 고른 오늘의 큐레이션</p>
-      <h1 id="heroTitle" class="text-xl font-black leading-snug sm:text-2xl lg:text-3xl">바다에 나가기 전에, 용품부터</h1>
-      <p id="heroDescription" class="mt-1 line-clamp-1 text-xs leading-5 text-slate-500 sm:mt-2 sm:text-sm sm:leading-6">보드부터 슈트·왁스·리쉬까지 한눈에 살펴보세요.</p>
-      <p class="mt-1 overflow-hidden whitespace-nowrap text-[10px] leading-5 text-slate-400 sm:text-[11px]">이 포스팅은 쿠팡 파트너스 활동으로 수수료를 제공받습니다.</p>
+    <section class="pt-5 pb-4">
+      <p class="mb-1 hidden text-[11px] font-medium tracking-wide text-neutral-400 sm:block">서프위키Ai가 고른 오늘의 큐레이션</p>
+      <h1 id="heroTitle" class="text-xl font-semibold leading-snug sm:text-2xl">바다에 나가기 전에, 용품부터</h1>
+      <p id="heroDescription" class="mt-1 line-clamp-1 text-[12px] leading-5 text-neutral-500 sm:mt-2 sm:text-[13px]">보드부터 슈트·왁스·리쉬까지 한눈에 살펴보세요.</p>
+      <p class="mt-1 overflow-hidden whitespace-nowrap text-[10px] leading-5 text-neutral-400">이 포스팅은 쿠팡 파트너스 활동으로 수수료를 제공받습니다.</p>
     </section>
-    <section class="mb-3 flex items-center gap-1.5 overflow-x-auto pb-1">
-      <a href="./wiki/" class="shrink-0 text-xs font-bold text-teal-600">용품가이드</a>
-      <a href="./wiki/?cat=서핑 입문" class="shrink-0 text-xs font-bold text-cyan-600">서핑가이드</a>
-      <a href="./wiki/02-chobo-checklist.html" class="shrink-0 rounded-full bg-white px-2.5 py-1 text-xs font-bold text-slate-600 hover:text-teal-600">초보체크</a>
-      <a href="./wiki/11-first-lesson.html" class="shrink-0 rounded-full bg-white px-2.5 py-1 text-xs font-bold text-slate-600 hover:text-teal-600">첫 강습</a>
-      <a href="./wiki/12-lineup-manner.html" class="shrink-0 rounded-full bg-white px-2.5 py-1 text-xs font-bold text-slate-600 hover:text-teal-600">라인업</a>
-      <a href="./wiki/03-board.html" class="shrink-0 rounded-full bg-white px-2.5 py-1 text-xs font-bold text-slate-600 hover:text-teal-600">보드</a>
-      <a href="./wiki/" class="shrink-0 text-xs font-bold text-slate-400 hover:text-teal-600">전체 →</a>
+    <section class="mb-2 flex items-center gap-4 overflow-x-auto border-b border-neutral-200 pb-3 text-[12px] font-medium tracking-wide">
+      <a href="./wiki/" class="shrink-0 text-black">용품가이드</a>
+      <a href="./wiki/?cat=서핑 입문" class="shrink-0 text-neutral-500 hover:text-black">서핑가이드</a>
+      <a href="./wiki/02-chobo-checklist.html" class="shrink-0 text-neutral-500 hover:text-black">초보체크</a>
+      <a href="./wiki/11-first-lesson.html" class="shrink-0 text-neutral-500 hover:text-black">첫 강습</a>
+      <a href="./wiki/12-lineup-manner.html" class="shrink-0 text-neutral-500 hover:text-black">라인업</a>
+      <a href="./wiki/03-board.html" class="shrink-0 text-neutral-500 hover:text-black">보드</a>
+      <a href="./wiki/" class="shrink-0 text-neutral-400 hover:text-black">전체 →</a>
     </section>
-    <nav class="sticky top-[5.5rem] z-10 -mx-4 mb-5 border-b border-sky-100 bg-sky-50/95 px-4 py-2 backdrop-blur">
-      <div class="flex items-center gap-2">
-        <button type="button" id="categoryAll" data-category="전체" class="shrink-0 rounded-full px-4 py-2 text-xs font-bold">전체</button>
-        <div id="categoryScroll" class="flex min-w-0 flex-1 gap-2 overflow-x-auto pb-1"></div>
+    <nav class="sticky top-[5.4rem] z-10 -mx-4 mb-4 border-b border-neutral-200 bg-white px-4">
+      <div class="flex items-center gap-4 overflow-x-auto">
+        <button type="button" id="categoryAll" data-category="전체" class="shrink-0 px-1 py-2 text-[12px] font-medium">전체</button>
+        <div id="categoryScroll" class="flex min-w-0 flex-1 gap-4 overflow-x-auto"></div>
       </div>
     </nav>
-    <div id="status" class="rounded-xl bg-white p-8 text-center text-sm text-slate-400">상품을 불러오는 중입니다.</div>
-    <section id="productGrid" class="hidden grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4"></section>
+    <div id="status" class="py-16 text-center text-[12px] text-neutral-400">상품을 불러오는 중입니다.</div>
+    <section id="productGrid" class="hidden grid grid-cols-2 gap-x-3 gap-y-8 sm:grid-cols-3 lg:grid-cols-4"></section>
   </main>
   <div id="modal" class="fixed inset-0 z-30 hidden items-end justify-center bg-black/50 p-0 sm:items-center sm:p-4">
-    <article class="max-h-[90vh] w-full max-w-lg overflow-y-auto rounded-t-3xl bg-white p-5 sm:rounded-3xl">
-      <div class="mb-4 flex justify-between"><span id="modalCategory" class="rounded-full bg-teal-50 px-2 py-1 text-xs font-bold text-teal-600"></span><button id="closeModal" class="text-2xl text-slate-400" aria-label="닫기">&times;</button></div>
-      <img id="modalImage" class="mb-4 h-64 w-full rounded-2xl object-cover" alt="">
-      <h2 id="modalTitle" class="text-lg font-black"></h2>
-      <p id="modalDescription" class="mt-2 text-sm leading-6 text-slate-500"></p>
-      <a id="modalLink" target="_blank" rel="noopener" class="mt-6 block rounded-xl bg-cyan-600 py-3 text-center text-sm font-bold text-white">쿠팡에서 상품 확인하기</a>
+    <article class="max-h-[90vh] w-full max-w-lg overflow-y-auto bg-white p-5">
+      <div class="mb-4 flex justify-between"><span id="modalCategory" class="text-[11px] font-medium tracking-wide text-neutral-400"></span><button id="closeModal" class="text-2xl text-neutral-400" aria-label="닫기">&times;</button></div>
+      <img id="modalImage" class="mb-4 h-64 w-full object-cover" alt="">
+      <h2 id="modalTitle" class="text-lg font-semibold"></h2>
+      <p id="modalDescription" class="mt-2 text-[13px] leading-6 text-neutral-500"></p>
+      <a id="modalLink" target="_blank" rel="noopener" class="mt-6 block bg-black py-3 text-center text-[13px] font-medium text-white">쿠팡에서 상품 확인하기</a>
     </article>
   </div>
   <script>
@@ -95,7 +101,7 @@
       });
     }
     function buttonClass(category) {
-      return `shrink-0 rounded-full px-4 py-2 text-xs font-bold ${category === state.category ? 'bg-slate-900 text-white' : 'bg-white text-slate-500'}`;
+      return `shrink-0 px-1 py-2 text-[12px] font-medium tracking-wide ${category === state.category ? 'border-b-2 border-black text-black' : 'text-neutral-400 hover:text-black'}`;
     }
     function renderCategories() {
       $('categoryAll').className = buttonClass('전체');
@@ -134,10 +140,10 @@
         : state.category === '전체'
           ? '표시할 상품이 없습니다.'
           : `${state.category} 상품이 없습니다.`;
-      $('productGrid').innerHTML = products.map(item => `<a href="${escapeHtml(item.product.coupangUrl)}" target="_blank" rel="noopener sponsored" class="overflow-hidden rounded-2xl border border-sky-100 bg-white text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md"><img src="${escapeHtml(item.product.imageUrl)}" alt="${escapeHtml(item.product.title)}" class="h-40 w-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='${PLACEHOLDER}'"><div class="p-3"><span class="text-[11px] font-bold text-teal-600">#${escapeHtml(item.category || '추천')}</span><h2 class="mt-1 line-clamp-2 text-sm font-bold">${escapeHtml(item.product.title)}</h2><p class="mt-2 line-clamp-2 text-xs leading-5 text-slate-500">${escapeHtml(item.description || item.product.description || '서핑을 위한 추천 용품')}</p></div></a>`).join('');
+      $('productGrid').innerHTML = products.map(item => `<a href="${escapeHtml(item.product.coupangUrl)}" target="_blank" rel="noopener sponsored" class="text-left"><img src="${escapeHtml(item.product.imageUrl)}" alt="${escapeHtml(item.product.title)}" class="aspect-square w-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='${PLACEHOLDER}'"><div class="pt-2"><span class="text-[10px] font-medium tracking-wide text-neutral-400">${escapeHtml(item.category || '추천')}</span><h2 class="mt-1 line-clamp-2 text-[12px] font-medium leading-5">${escapeHtml(item.product.title)}</h2><p class="mt-1 line-clamp-2 text-[11px] leading-4 text-neutral-500">${escapeHtml(item.description || item.product.description || '서핑을 위한 추천 용품')}</p></div></a>`).join('');
     }
     function openModal(item) {
-      $('modalCategory').textContent = `#${item.category || '추천'}`;
+      $('modalCategory').textContent = item.category || '추천';
       $('modalImage').onerror = function () { this.onerror = null; this.src = PLACEHOLDER; };
       $('modalImage').src = item.product.imageUrl;
       $('modalImage').alt = item.product.title;
@@ -151,12 +157,12 @@
     $('modal').addEventListener('click', event => { if (event.target === $('modal')) closeModal(); });
     function escapeHtml(value) { return String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char])); }
   </script>
-  <div class="fixed inset-x-0 bottom-0 z-40">
-    <div class="flex border-t border-cyan-100 bg-cyan-50">
-      <a id="footerWow" href="https://link.coupang.com/a/gU16lCobu0" target="_blank" rel="noopener sponsored" class="flex-1 py-2 text-center text-[11px] font-semibold text-teal-700">로켓와우</a>
-      <a id="footerStay" href="https://link.coupang.com/a/gU3EgPN6wS" target="_blank" rel="noopener sponsored" class="flex-1 border-l border-cyan-100 py-2 text-center text-[11px] font-semibold text-teal-700">서핑 숙소</a>
+  <div class="fixed inset-x-0 bottom-0 z-40 border-t border-neutral-200 bg-white">
+    <div class="flex">
+      <a id="footerWow" href="https://link.coupang.com/a/gU16lCobu0" target="_blank" rel="noopener sponsored" class="flex-1 py-2 text-center text-[11px] font-medium tracking-wide text-black">로켓와우</a>
+      <a id="footerStay" href="https://link.coupang.com/a/gU3EgPN6wS" target="_blank" rel="noopener sponsored" class="flex-1 border-l border-neutral-200 py-2 text-center text-[11px] font-medium tracking-wide text-black">서핑 숙소</a>
     </div>
-    <a href="https://surfwikikorea.vercel.app/" target="_blank" rel="noopener" class="block bg-cyan-600 py-3 text-center text-sm font-bold text-white shadow-[0_-8px_24px_rgba(0,0,0,.12)]" style="padding-bottom: max(0.75rem, env(safe-area-inset-bottom))">서프위키Ai 바로가기</a>
+    <a href="https://surfwikikorea.vercel.app/" target="_blank" rel="noopener" class="block bg-black py-3 text-center text-[13px] font-medium tracking-wide text-white" style="padding-bottom: max(0.75rem, env(safe-area-inset-bottom))">서프위키Ai 바로가기</a>
   </div>
 </body>
 </html>

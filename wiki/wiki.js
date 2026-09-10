@@ -48,8 +48,8 @@
     const gear = $('navGear');
     const surf = $('navSurf');
     if (!gear || !surf) return;
-    gear.className = isSurf ? 'text-slate-400 hover:text-teal-600' : 'text-slate-900';
-    surf.className = isSurf ? 'text-slate-900' : 'text-slate-400 hover:text-teal-600';
+    gear.className = isSurf ? 'pb-1 text-neutral-400 hover:text-black' : 'border-b border-black pb-1 text-black';
+    surf.className = isSurf ? 'border-b border-black pb-1 text-black' : 'pb-1 text-neutral-400 hover:text-black';
   }
   const slug = articleSlug();
   fetch('../data/config.json').then(r => r.json()).then(config => {
@@ -102,8 +102,8 @@
         if (heading.tagName === 'H2') { h2 += 1; h3 = 0; }
         else { h3 += 1; }
         const num = heading.tagName === 'H2' ? `${h2}` : `${h2}.${h3}`;
-        const pad = heading.tagName === 'H3' ? 'pl-4 text-slate-500' : 'font-bold text-slate-700';
-        return `<a class="block py-0.5 ${pad} hover:text-teal-600" href="#${heading.id}">${num} ${escapeHtml(heading.textContent)}</a>`;
+        const pad = heading.tagName === 'H3' ? 'pl-4 text-neutral-500' : 'font-medium text-neutral-800';
+        return `<a class="block py-0.5 ${pad} hover:text-black" href="#${heading.id}">${num} ${escapeHtml(heading.textContent)}</a>`;
       }).join('');
       $('tocBox').open = window.matchMedia('(min-width: 1024px)').matches;
     }
@@ -116,8 +116,8 @@
       if (!groups.length) return;
       $('related').classList.remove('hidden');
       $('relatedGroups').innerHTML = groups.map(group =>
-        `<div><h3 class="mb-3 text-sm font-black text-teal-600">#${escapeHtml(group.category)}</h3><div class="grid grid-cols-2 gap-3 sm:grid-cols-4">${group.items.map(item =>
-          `<a href="${escapeHtml(item.product.coupangUrl)}" target="_blank" rel="noopener sponsored" class="overflow-hidden rounded-2xl border border-sky-100 bg-white text-left shadow-sm transition hover:-translate-y-1 hover:shadow-md"><img src="${escapeHtml(imageSrc(item))}" alt="${escapeHtml(item.product.title)}" class="h-40 w-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='${PLACEHOLDER}'"><div class="p-3"><span class="text-[11px] font-bold text-teal-600">#${escapeHtml(item.category || '추천')}</span><h3 class="mt-1 line-clamp-2 text-sm font-bold">${escapeHtml(item.product.title)}</h3><p class="mt-2 line-clamp-2 text-xs leading-5 text-slate-500">${escapeHtml(item.description || item.product.description || '서핑을 위한 추천 용품')}</p></div></a>`
+        `<div><h3 class="mb-3 text-[12px] font-medium tracking-wide text-neutral-400">${escapeHtml(group.category)}</h3><div class="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-4">${group.items.map(item =>
+          `<a href="${escapeHtml(item.product.coupangUrl)}" target="_blank" rel="noopener sponsored" class="text-left"><img src="${escapeHtml(imageSrc(item))}" alt="${escapeHtml(item.product.title)}" class="aspect-square w-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='${PLACEHOLDER}'"><div class="pt-2"><span class="text-[10px] font-medium tracking-wide text-neutral-400">${escapeHtml(item.category || '추천')}</span><h3 class="mt-1 line-clamp-2 text-[12px] font-medium leading-5">${escapeHtml(item.product.title)}</h3><p class="mt-1 line-clamp-2 text-[11px] leading-4 text-neutral-500">${escapeHtml(item.description || item.product.description || '서핑을 위한 추천 용품')}</p></div></a>`
         ).join('')}</div></div>`
       ).join('');
     });
