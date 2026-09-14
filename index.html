@@ -88,6 +88,7 @@
     </nav>
     <div id="status" class="py-16 text-center text-[12px] text-neutral-400">상품을 불러오는 중입니다.</div>
     <section id="productGrid" class="hidden grid grid-cols-2 gap-x-3 gap-y-8 sm:grid-cols-3 lg:grid-cols-4"></section>
+    <nav id="pagination" class="mt-10 hidden" aria-label="상품 페이지"></nav>
   </main>
   <div id="modal" class="fixed inset-0 z-30 hidden items-end justify-center bg-black/50 p-0 sm:items-center sm:p-4">
     <article class="max-h-[90vh] w-full max-w-lg overflow-y-auto bg-white p-5">
@@ -101,7 +102,9 @@
   <script>
     const CATEGORIES = ['보드/핀', '슈트/래시가드', '왁스/그립', '리쉬/안전', '가방/캐리어', '관리/수리', '액세서리', '기타'];
     const PLACEHOLDER = './images/placeholder.svg';
-    const state = { products: [], category: '전체' };
+    const PAGE_SIZE = 30;
+    const ORDER_KEY = 'surfwiki-product-order';
+    const state = { products: [], category: '전체', page: 1 };
     const $ = id => document.getElementById(id);
     function applySiteLinks(config) {
       $('heroTitle').textContent = config.hero.title;
@@ -116,9 +119,9 @@
       if (!response.ok) throw new Error('상품 데이터 응답 오류');
       return response.json();
     }).then(products => {
-      state.products = uniqueProducts(products).filter(item =>
+      state.products = applySessionOrder(uniqueProducts(products).filter(item =>
         item.product?.imageUrl?.endsWith('.jpg') && !/^서핑 용품 추천 /.test(item.product.title || '')
-      );
+      ));
       renderCategories();
       renderProducts();
     }).catch(error => {
@@ -137,6 +140,44 @@
         return true;
       });
     }
+    function shuffleIds(ids) {
+      const items = ids.slice();
+      for (let i = items.length - 1; i > 0; i -= 1) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [items[i], items[j]] = [items[j], items[i]];
+      }
+      return items;
+    }
+    function readSavedOrder() {
+      try {
+        const saved = JSON.parse(sessionStorage.getItem(ORDER_KEY) || 'null');
+        return Array.isArray(saved) ? saved : [];
+      } catch {
+        return [];
+      }
+    }
+    function writeSavedOrder(ids) {
+      try { sessionStorage.setItem(ORDER_KEY, JSON.stringify(ids)); } catch {}
+    }
+    function sortByOrder(products, ids) {
+      const rank = new Map(ids.map((id, index) => [id, index]));
+      return products.slice().sort((a, b) => (rank.get(a.id) ?? 0) - (rank.get(b.id) ?? 0));
+    }
+    function applySessionOrder(products) {
+      const currentIds = products.map(item => item.id);
+      const known = new Set(currentIds);
+      const kept = readSavedOrder().filter(id => known.has(id));
+      const keptSet = new Set(kept);
+      const newcomers = shuffleIds(currentIds.filter(id => !keptSet.has(id)));
+      const order = kept.length ? kept.concat(newcomers) : shuffleIds(currentIds);
+      writeSavedOrder(order);
+      return sortByOrder(products, order);
+    }
+    function reshuffleSessionOrder() {
+      const order = shuffleIds(state.products.map(item => item.id));
+      writeSavedOrder(order);
+      state.products = sortByOrder(state.products, order);
+    }
     function buttonClass(category) {
       return `shrink-0 px-1 py-2 text-[12px] font-medium tracking-wide ${category === state.category ? 'border-b-2 border-black text-black' : 'text-neutral-400 hover:text-black'}`;
     }
@@ -153,23 +194,71 @@
       });
     }
     function selectCategory(category) {
+      const resettingFilters = category === '전체' && state.category !== '전체';
       state.category = category;
+      state.page = 1;
+      if (resettingFilters) reshuffleSessionOrder();
       renderCategories();
       renderProducts();
       $('productGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     function visibleProducts() {
-      const filtered = state.category === '전체'
+      return state.category === '전체'
         ? state.products
         : state.products.filter(item => item.category === state.category);
-      return filtered.slice().sort((a, b) => {
-        const aPhoto = a.product.imageUrl.endsWith('.jpg') ? 0 : 1;
-        const bPhoto = b.product.imageUrl.endsWith('.jpg') ? 0 : 1;
-        return aPhoto - bPhoto || a.id - b.id;
+    }
+    function pageButtonClass(active, disabled) {
+      const base = 'min-h-11 min-w-11 shrink-0 px-3 text-[12px] font-medium tracking-wide';
+      if (disabled) return `${base} text-neutral-300`;
+      if (active) return `${base} bg-black text-white`;
+      return `${base} text-neutral-500 hover:text-black`;
+    }
+    function goToPage(page, totalPages) {
+      const next = Math.min(totalPages, Math.max(1, page));
+      if (next === state.page) return;
+      state.page = next;
+      renderProducts();
+      $('productGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    function renderPagination(total) {
+      const nav = $('pagination');
+      const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+      if (state.page > totalPages) state.page = totalPages;
+      if (total === 0 || totalPages <= 1) {
+        nav.classList.add('hidden');
+        nav.innerHTML = '';
+        return;
+      }
+      const start = (state.page - 1) * PAGE_SIZE + 1;
+      const end = Math.min(state.page * PAGE_SIZE, total);
+      const prevDisabled = state.page === 1;
+      const nextDisabled = state.page === totalPages;
+      const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
+      nav.classList.remove('hidden');
+      nav.innerHTML = `
+        <p class="mb-3 text-center text-[11px] leading-5 text-neutral-400">${start}–${end} / ${total}개 · ${state.page} / ${totalPages}페이지</p>
+        <div class="flex flex-wrap items-center justify-center gap-1 sm:gap-2">
+          <button type="button" data-page="prev" ${prevDisabled ? 'disabled' : ''} aria-label="이전 페이지" class="${pageButtonClass(false, prevDisabled)}">이전</button>
+          ${pages.map(page => `<button type="button" data-page="${page}" aria-label="${page}페이지" ${page === state.page ? 'aria-current="page"' : ''} class="${pageButtonClass(page === state.page, false)}">${page}</button>`).join('')}
+          <button type="button" data-page="next" ${nextDisabled ? 'disabled' : ''} aria-label="다음 페이지" class="${pageButtonClass(false, nextDisabled)}">다음</button>
+        </div>
+      `;
+      nav.querySelectorAll('button').forEach(button => {
+        button.addEventListener('click', () => {
+          const target = button.dataset.page;
+          if (target === 'prev') goToPage(state.page - 1, totalPages);
+          else if (target === 'next') goToPage(state.page + 1, totalPages);
+          else goToPage(Number(target), totalPages);
+        });
       });
     }
     function renderProducts() {
       const products = visibleProducts();
+      const totalPages = Math.max(1, Math.ceil(products.length / PAGE_SIZE));
+      if (state.page > totalPages) state.page = totalPages;
+      if (state.page < 1) state.page = 1;
+      const start = (state.page - 1) * PAGE_SIZE;
+      const pageItems = products.slice(start, start + PAGE_SIZE);
       $('status').classList.toggle('hidden', products.length > 0);
       $('productGrid').classList.toggle('hidden', products.length === 0);
       $('status').textContent = products.length
@@ -177,7 +266,8 @@
         : state.category === '전체'
           ? '표시할 상품이 없습니다.'
           : `${state.category} 상품이 없습니다.`;
-      $('productGrid').innerHTML = products.map(item => `<a href="${escapeHtml(item.product.coupangUrl)}" target="_blank" rel="noopener sponsored" class="text-left"><img src="${escapeHtml(item.product.imageUrl)}" alt="${escapeHtml(item.product.title)}" class="aspect-square w-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='${PLACEHOLDER}'"><div class="pt-2"><span class="text-[10px] font-medium tracking-wide text-neutral-400">${escapeHtml(item.category || '추천')}</span><h2 class="mt-1 line-clamp-2 text-[12px] font-medium leading-5">${escapeHtml(item.product.title)}</h2><p class="mt-1 line-clamp-2 text-[11px] leading-4 text-neutral-500">${escapeHtml(item.description || item.product.description || '서핑을 위한 추천 용품')}</p></div></a>`).join('');
+      $('productGrid').innerHTML = pageItems.map(item => `<a href="${escapeHtml(item.product.coupangUrl)}" target="_blank" rel="noopener sponsored" class="text-left"><img src="${escapeHtml(item.product.imageUrl)}" alt="${escapeHtml(item.product.title)}" class="aspect-square w-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='${PLACEHOLDER}'"><div class="pt-2"><span class="text-[10px] font-medium tracking-wide text-neutral-400">${escapeHtml(item.category || '추천')}</span><h2 class="mt-1 line-clamp-2 text-[12px] font-medium leading-5">${escapeHtml(item.product.title)}</h2><p class="mt-1 line-clamp-2 text-[11px] leading-4 text-neutral-500">${escapeHtml(item.description || item.product.description || '서핑을 위한 추천 용품')}</p></div></a>`).join('');
+      renderPagination(products.length);
     }
     function openModal(item) {
       $('modalCategory').textContent = item.category || '추천';
