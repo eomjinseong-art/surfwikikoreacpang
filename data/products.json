@@ -33,6 +33,17 @@
     }
   },
   {
+    "id": 4,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "서핑 용품 추천 4",
+      "coupangUrl": "https://link.coupang.com/a/gTvbMJhQbI",
+      "imageUrl": "./images/products/product-004.svg",
+      "productId": "9586817971"
+    }
+  },
+  {
     "id": 5,
     "category": "액세서리",
     "description": "세션을 편하게 만드는 작은 용품입니다.",
@@ -226,7 +237,7 @@
     "product": {
       "title": "구김스 완벽방수 자외선차단 서핑모자 챙넓은 버킷햇 벙거지 남녀공용 아웃도어, S type, 블랙(BLACK)쿠폰",
       "coupangUrl": "https://link.coupang.com/a/gTvrCKQ7qe",
-      "imageUrl": "./images/products/product-027.svg",
+      "imageUrl": "./images/products/product-027.jpg",
       "productId": "9663624226"
     }
   },
@@ -510,7 +521,7 @@
     "category": "기타",
     "description": "서핑에 유용한 추천 용품입니다.",
     "product": {
-      "title": "서핑 용품 추천 55",
+      "title": "더넥스트 스파크 트렁크 선반 고정클립 P",
       "coupangUrl": "https://link.coupang.com/a/gTvPvOY9mu",
       "imageUrl": "./images/products/product-055.svg",
       "productId": "9627226444"
@@ -521,10 +532,10 @@
     "category": "기타",
     "description": "서핑에 유용한 추천 용품입니다.",
     "product": {
-      "title": "2차리오더 [냉감으로 쾌적하게/스판으로 편안하게] 냉감 스판 남성용 집업 반팔 티셔츠 MBTM411 (95~110)",
-      "coupangUrl": "https://link.coupang.com/a/gTvQM2XAce",
+      "title": "에버라스트 남성 여성 매쉬 스포츠 샌들 다이얼 멀티화 아쿠아 워터 여름 운동화 런닝화 러닝화 골프 트레킹화 논슬립 슈즈54I,400무료반품",
+      "coupangUrl": "https://link.coupang.com/a/gU5Dy9217c",
       "imageUrl": "./images/products/product-056.jpg",
-      "productId": "8457199948"
+      "productId": "7412726131"
     }
   },
   {
@@ -550,6 +561,17 @@
     }
   },
   {
+    "id": 59,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "서핑 용품 추천 59",
+      "coupangUrl": "https://link.coupang.com/a/gTvSJjPvMq",
+      "imageUrl": "./images/products/product-059.jpg",
+      "productId": "8457199889"
+    }
+  },
+  {
     "id": 60,
     "category": "관리/수리",
     "description": "딩 수리와 핀 관리를 위한 용품입니다.",
@@ -572,17 +594,6 @@
     }
   },
   {
-    "id": 62,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 62",
-      "coupangUrl": "https://link.coupang.com/a/gTvWMvCFY4",
-      "imageUrl": "./images/products/product-062.svg",
-      "productId": "9680914868"
-    }
-  },
-  {
     "id": 64,
     "category": "기타",
     "description": "서핑에 유용한 추천 용품입니다.",
@@ -598,7 +609,7 @@
     "category": "기타",
     "description": "서핑에 유용한 추천 용품입니다.",
     "product": {
-      "title": "서핑 용품 추천 65",
+      "title": "현대 싼타페 베라크루즈 2007-2012용 헬릭스 에어리얼 폴 안테나 962002B000 96200 2B",
       "coupangUrl": "https://link.coupang.com/a/gTvZlk7iQm",
       "imageUrl": "./images/products/product-065.svg",
       "productId": "9626607488"
@@ -723,6 +734,17 @@
       "coupangUrl": "https://link.coupang.com/a/gTwfZepuPA",
       "imageUrl": "./images/products/product-076.svg",
       "productId": "8916583222"
+    }
+  },
+  {
+    "id": 77,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "자동차용 OE 11237797995 30731045 A2710300003 11238512072 11238638614",
+      "coupangUrl": "https://link.coupang.com/a/gTwgyIuNsi",
+      "imageUrl": "./images/products/product-077.svg",
+      "productId": "30000011254624"
     }
   },
   {
@@ -880,6 +902,17 @@
     }
   },
   {
+    "id": 95,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "서핑 용품 추천 95",
+      "coupangUrl": "https://link.coupang.com/a/gTwvRi84k0",
+      "imageUrl": "./images/products/product-095.jpg",
+      "productId": "6568362307"
+    }
+  },
+  {
     "id": 97,
     "category": "기타",
     "description": "서핑에 유용한 추천 용품입니다.",
@@ -913,14 +946,410 @@
     }
   },
   {
-    "id": 100,
+    "id": 166,
     "category": "기타",
     "description": "서핑에 유용한 추천 용품입니다.",
     "product": {
       "title": "서핑 용품 추천",
-      "coupangUrl": "https://link.coupang.com/a/gTwAdS4scC",
-      "imageUrl": "./images/products/product-100.svg",
-      "productId": "7235490191"
+      "coupangUrl": "https://link.coupang.com/a/g2dLNtQlX2",
+      "imageUrl": "./images/products/product-166.jpg",
+      "productId": "8873183605"
+    }
+  },
+  {
+    "id": 102,
+    "category": "슈트/래시가드",
+    "description": "계절과 수온에 맞춘 보온·자외선 차단 용품입니다.",
+    "product": {
+      "title": "남녀공용 썸머 비치 반바지 6color / FREE~XL 빅사이즈 수영복 래쉬가드 해변 숏팬츠 트레이닝 커플바지 비치웨어 워터팬츠, 그린",
+      "coupangUrl": "https://link.coupang.com/a/g2c29ByoPk",
+      "imageUrl": "./images/products/product-102.jpg",
+      "productId": "8717792856"
+    }
+  },
+  {
+    "id": 103,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "제조국: 중국 · 소재: 데님 · 색상계열: 블랙계열 · 성별: 남여공용 · 사용계절: 여름용 ·",
+      "coupangUrl": "https://link.coupang.com/a/g2c4bZ9NUy",
+      "imageUrl": "./images/products/product-103.jpg",
+      "productId": "7445777543"
+    }
+  },
+  {
+    "id": 104,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "비브온 커플 미끄럼방지 아쿠아슈즈 - 아쿠아슈즈",
+      "coupangUrl": "https://link.coupang.com/a/g2c4EspcLA",
+      "imageUrl": "./images/products/product-104.jpg",
+      "productId": "8819179647"
+    }
+  },
+  {
+    "id": 105,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "오닐 웨이크 워터슈즈 아쿠아슈즈 ONWS1955 블랙 남녀공용 물놀이신발 래프팅 수상스포츠 여름 수영사랑 폴리백 증정20G",
+      "coupangUrl": "https://link.coupang.com/a/g2c5aIoMkm",
+      "imageUrl": "./images/products/product-105.jpg",
+      "productId": "9659992949"
+    }
+  },
+  {
+    "id": 106,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "베이스알파에센셜 스킨핏 아쿠아 슈즈",
+      "coupangUrl": "https://link.coupang.com/a/g2c5EHT0Hk",
+      "imageUrl": "./images/products/product-106.jpg",
+      "productId": "7060014104"
+    }
+  },
+  {
+    "id": 108,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "에트유 워터 아쿠아슈즈 - GGG PICK",
+      "coupangUrl": "https://link.coupang.com/a/g2c6KUtn76",
+      "imageUrl": "./images/products/product-108.jpg",
+      "productId": "9460464477"
+    }
+  },
+  {
+    "id": 109,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "에버라스트 남성 여성 헬스 웨이트화 아쿠아 슈즈 여름 물놀이 운동화 매쉬 벨크로 워터 스포츠 신발 경량 쿠션 발편한 논슬립 신발 경량화 쿠션화62),500무료반품",
+      "coupangUrl": "https://link.coupang.com/a/g2c7g1Jywu",
+      "imageUrl": "./images/products/product-109.jpg",
+      "productId": "7208288637"
+    }
+  },
+  {
+    "id": 110,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "서프라이더 남녀 초경량 논슬립 아쿠아슈즈 3컬러 - 아쿠아슈즈",
+      "coupangUrl": "https://link.coupang.com/a/g2c7Ndazgy",
+      "imageUrl": "./images/products/product-110.jpg",
+      "productId": "8099587162"
+    }
+  },
+  {
+    "id": 111,
+    "category": "슈트/래시가드",
+    "description": "계절과 수온에 맞춘 보온·자외선 차단 용품입니다.",
+    "product": {
+      "title": "Varuna 2mm 네오프렌 핀삭스 아쿠아슈즈 프리다이빙 스쿠버 서핑 다이빙삭스 미끄럼방지 워터슈즈, 흰색",
+      "coupangUrl": "https://link.coupang.com/a/g2c8jiVjie",
+      "imageUrl": "./images/products/product-111.jpg",
+      "productId": "8003382441"
+    }
+  },
+  {
+    "id": 112,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "서핑 용품 추천 112",
+      "coupangUrl": "https://link.coupang.com/a/g2c82FkV3s",
+      "imageUrl": "./images/products/product-112.jpg",
+      "productId": "9518316942"
+    }
+  },
+  {
+    "id": 113,
+    "category": "리쉬/안전",
+    "description": "보드와 몸을 지키는 리쉬와 안전 용품입니다.",
+    "product": {
+      "title": "아넥스 서프 리쉬코드 9.0 - 서핑/수상보드 부품",
+      "coupangUrl": "https://link.coupang.com/a/g2daD94Yz6",
+      "imageUrl": "./images/products/product-113.jpg",
+      "productId": "96485479"
+    }
+  },
+  {
+    "id": 114,
+    "category": "보드/핀",
+    "description": "체중과 실력에 맞춰 고른 보드와 핀입니다.",
+    "product": {
+      "title": "헬로엑스 헬로스키장갑 남녀공용 방수방한 터치가능 스노우보드장갑, 화이트, 1개",
+      "coupangUrl": "https://link.coupang.com/a/g2dbjJ4Zzw",
+      "imageUrl": "./images/products/product-114.jpg",
+      "productId": "7907438160"
+    }
+  },
+  {
+    "id": 115,
+    "category": "리쉬/안전",
+    "description": "보드와 몸을 지키는 리쉬와 안전 용품입니다.",
+    "product": {
+      "title": "마르 서프리쉬 (롱보드용) 서핑리쉬 리쉬코드 - 서핑/수상보드 부품",
+      "coupangUrl": "https://link.coupang.com/a/g2dbXsJKpM",
+      "imageUrl": "./images/products/product-115.jpg",
+      "productId": "8075293269"
+    }
+  },
+  {
+    "id": 118,
+    "category": "왁스/그립",
+    "description": "미끄럼을 줄이는 왁스와 덱패드입니다.",
+    "product": {
+      "title": "스티키범프 서핑왁스 오리지널 베이스코트 BASECOAT, 2개, 85g",
+      "coupangUrl": "https://link.coupang.com/a/g2ddTZJfQi",
+      "imageUrl": "./images/products/product-118.jpg",
+      "productId": "8704101389"
+    }
+  },
+  {
+    "id": 121,
+    "category": "왁스/그립",
+    "description": "미끄럼을 줄이는 왁스와 덱패드입니다.",
+    "product": {
+      "title": "마투나스 유기농 서프왁스 - 웜 (Warm) - 서핑/수상보드 부품",
+      "coupangUrl": "https://link.coupang.com/a/g2de8XzTuS",
+      "imageUrl": "./images/products/product-121.jpg",
+      "productId": "6064035718"
+    }
+  },
+  {
+    "id": 124,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "카니발 24 KA4 스마트키95440R0850 81996P2800 보조키 포함",
+      "coupangUrl": "https://link.coupang.com/a/g2diEfwWCy",
+      "imageUrl": "./images/products/product-124.svg",
+      "productId": "9479713461"
+    }
+  },
+  {
+    "id": 126,
+    "category": "왁스/그립",
+    "description": "미끄럼을 줄이는 왁스와 덱패드입니다.",
+    "product": {
+      "title": "서핑왁스 스티키범프 sticky bumps PUNT (엘로우/블루) - 서핑/수상보드 부품",
+      "coupangUrl": "https://link.coupang.com/a/g2dj14lNPU",
+      "imageUrl": "./images/products/product-126.jpg",
+      "productId": "9444838299"
+    }
+  },
+  {
+    "id": 129,
+    "category": "액세서리",
+    "description": "세션을 편하게 만드는 작은 용품입니다.",
+    "product": {
+      "title": "라이트밸런스 3세대 IPX8 원터치 스펀지 튜브 핸드폰 방수팩 물놀이 스마트폰 방수케이스 길이조절 넥 크로스 스트랩, 화이트, 1개",
+      "coupangUrl": "https://link.coupang.com/a/g2dlXuEnMO",
+      "imageUrl": "./images/products/product-129.jpg",
+      "productId": "8786758775"
+    }
+  },
+  {
+    "id": 130,
+    "category": "액세서리",
+    "description": "세션을 편하게 만드는 작은 용품입니다.",
+    "product": {
+      "title": "어버너 IPX8 방수팩 8.2인치 핸드폰 방수힙색 워터파크 수영장 - 방수팩/방수케이스",
+      "coupangUrl": "https://link.coupang.com/a/g2dmn6TTvE",
+      "imageUrl": "./images/products/product-130.jpg",
+      "productId": "8198677625"
+    }
+  },
+  {
+    "id": 131,
+    "category": "액세서리",
+    "description": "세션을 편하게 만드는 작은 용품입니다.",
+    "product": {
+      "title": "2026년 업그레이드 핸드폰 방수팩 휴대폰 방수케이스 방수팩 방수가방, 1개, 블랙할인",
+      "coupangUrl": "https://link.coupang.com/a/g2dmPsYvtI",
+      "imageUrl": "./images/products/product-131.jpg",
+      "productId": "7330566805"
+    }
+  },
+  {
+    "id": 132,
+    "category": "액세서리",
+    "description": "세션을 편하게 만드는 작은 용품입니다.",
+    "product": {
+      "title": "아쿠아실드 다용도 대형 터치 스마트폰 핸드폰 방수팩, 1개, 블랙",
+      "coupangUrl": "https://link.coupang.com/a/g2dnqDeNCS",
+      "imageUrl": "./images/products/product-132.jpg",
+      "productId": "9409612329"
+    }
+  },
+  {
+    "id": 133,
+    "category": "관리/수리",
+    "description": "딩 수리와 핀 관리를 위한 용품입니다.",
+    "product": {
+      "title": "휴대폰 방수백 터치식 밀봉 다이빙 커버 드리프트 라이딩 모바일 수영 장비 에어백 방수백 크기 대용량 휴대폰 방수백, 랜덤 색상*",
+      "coupangUrl": "https://link.coupang.com/a/g2dnSNP0Kq",
+      "imageUrl": "./images/products/product-133.jpg",
+      "productId": "8579465515"
+    }
+  },
+  {
+    "id": 134,
+    "category": "액세서리",
+    "description": "세션을 편하게 만드는 작은 용품입니다.",
+    "product": {
+      "title": "2026년 업그레이드 핸드폰 방수팩 휴대폰 방수케이스 방수팩 방수가방, 1개, 흰색할인",
+      "coupangUrl": "https://link.coupang.com/a/g2dolRdvRk",
+      "imageUrl": "./images/products/product-134.jpg",
+      "productId": "9662815010"
+    }
+  },
+  {
+    "id": 135,
+    "category": "액세서리",
+    "description": "세션을 편하게 만드는 작은 용품입니다.",
+    "product": {
+      "title": "신지모루 맥세이프 360도 풀커버 워터락 철벽방어 방수케이스 핸드폰 방수팩 - 방수케이스",
+      "coupangUrl": "https://link.coupang.com/a/g2doQQ4376",
+      "imageUrl": "./images/products/product-135.jpg",
+      "productId": "8680095874"
+    }
+  },
+  {
+    "id": 136,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "수입차 벤츠 에어필터 C14114 WA9443 49214 E472L CA9680",
+      "coupangUrl": "https://link.coupang.com/a/g2dpJkKsjQ",
+      "imageUrl": "./images/products/product-136.svg",
+      "productId": "9414685924"
+    }
+  },
+  {
+    "id": 138,
+    "category": "보드/핀",
+    "description": "체중과 실력에 맞춰 고른 보드와 핀입니다.",
+    "product": {
+      "title": "3pcs 소프트 보드 패들 보드 서핑 보드 액세서리 용 소프트 탑 서핑 보드 핀 세트....",
+      "coupangUrl": "https://link.coupang.com/a/g2dqwOjn5g",
+      "imageUrl": "./images/products/product-138.jpg",
+      "productId": "7613577623"
+    }
+  },
+  {
+    "id": 145,
+    "category": "보드/핀",
+    "description": "체중과 실력에 맞춰 고른 보드와 핀입니다.",
+    "product": {
+      "title": "SUP 패들 서핑 보드 탈착식 핀 삽입형 테일 핀 - 서핑/수상보드 부품",
+      "coupangUrl": "https://link.coupang.com/a/g2dtYE4HMO",
+      "imageUrl": "./images/products/product-145.jpg",
+      "productId": "8845886269"
+    }
+  },
+  {
+    "id": 146,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "오닐 하이퍼프레이크 파이어 후드 1.5mm 49812OA, 002 BLACK",
+      "coupangUrl": "https://link.coupang.com/a/g2dvN1t2Z2",
+      "imageUrl": "./images/products/product-146.jpg",
+      "productId": "7307636999"
+    }
+  },
+  {
+    "id": 148,
+    "category": "액세서리",
+    "description": "세션을 편하게 만드는 작은 용품입니다.",
+    "product": {
+      "title": "TAPONY 비치가운 비치판초 판초타월 서핑판초 후드판초 판초 비치 타올 서핑 가운 비치타올 수영 체온유지",
+      "coupangUrl": "https://link.coupang.com/a/g2dA5Xmons",
+      "imageUrl": "./images/products/product-148.jpg",
+      "productId": "6460824395"
+    }
+  },
+  {
+    "id": 149,
+    "category": "액세서리",
+    "description": "세션을 편하게 만드는 작은 용품입니다.",
+    "product": {
+      "title": "HOPT 홉트 다이빙 비니 스쿠버 프리다이빙 후드 서핑 잠수 바다수영 모자, 탠져린 오렌지(tangerine)",
+      "coupangUrl": "https://link.coupang.com/a/g2dBDaVtFk",
+      "imageUrl": "./images/products/product-149.jpg",
+      "productId": "340569987"
+    }
+  },
+  {
+    "id": 150,
+    "category": "가방/캐리어",
+    "description": "이동과 보관 때 보드를 보호하는 가방입니다.",
+    "product": {
+      "title": "위베런 랩터 스노클링 마스크 세트 미러렌즈 자외선차단 머리엉킴방지 스트랩커버 고급가방, UV, 스칼렛레드",
+      "coupangUrl": "https://link.coupang.com/a/g2dCakiUwu",
+      "imageUrl": "./images/products/product-150.jpg",
+      "productId": "8519644346"
+    }
+  },
+  {
+    "id": 152,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "사이즈 × 색상 × 사이즈 × 수량 그린 × L/XL(둘레 59~61cm x 높이 16cm x 챙길이 16cm) × 1개",
+      "coupangUrl": "https://link.coupang.com/a/g2dDjEx9nE",
+      "imageUrl": "./images/products/product-152.jpg",
+      "productId": "9496512433"
+    }
+  },
+  {
+    "id": 154,
+    "category": "슈트/래시가드",
+    "description": "계절과 수온에 맞춘 보온·자외선 차단 용품입니다.",
+    "product": {
+      "title": "SUB22 남성 서핑 다이빙 2.5mm 웻슈트 네오플렌 조끼, 네이비",
+      "coupangUrl": "https://link.coupang.com/a/g2dEWYsH5E",
+      "imageUrl": "./images/products/product-154.jpg",
+      "productId": "8202682030"
+    }
+  },
+  {
+    "id": 159,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "르노삼성, QM6 도어 어셈블리-프론트 우, 조수석앞도어, 조수석후도어, 중고, 판금도색 필수, 801006107R, 801009510R. 801005876R.",
+      "coupangUrl": "https://link.coupang.com/a/g2dHNKznI4",
+      "imageUrl": "./images/products/product-159.svg",
+      "productId": "8067602555"
+    }
+  },
+  {
+    "id": 165,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "SABU 5mm 다이빙장갑 서핑 수중 스쿠버 장갑 수영 아쿠아 물놀이",
+      "coupangUrl": "https://link.coupang.com/a/g2dKUOVp1M",
+      "imageUrl": "./images/products/product-165.jpg",
+      "productId": "9260970585"
+    }
+  },
+  {
+    "id": 169,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "캠핑망토 몽골망토 판쵸 판초 에스닉 담요 어깨숄 여행 블랭킷(기모수면양말 포함)",
+      "coupangUrl": "https://link.coupang.com/a/g2dOWyPg6K",
+      "imageUrl": "./images/products/product-169.jpg",
+      "productId": "8803703530"
     }
   }
 ]
