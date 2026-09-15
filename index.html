@@ -61,6 +61,7 @@
         <a href="./" class="border-b border-black pb-1 text-black">서핑용품</a>
         <a href="./wiki/" class="pb-1 text-neutral-400 hover:text-black">용품가이드</a>
         <a href="./wiki/?cat=서핑 입문" class="pb-1 text-neutral-400 hover:text-black">서핑가이드</a>
+        <span id="visitCount" hidden aria-hidden="true" class="ml-auto shrink-0 self-center text-[11px] font-medium tracking-wide text-neutral-400 tabular-nums"></span>
       </nav>
     </div>
   </header>
@@ -284,6 +285,7 @@
     $('modal').addEventListener('click', event => { if (event.target === $('modal')) closeModal(); });
     function escapeHtml(value) { return String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char])); }
   </script>
+  <script src="./visits.js"></script>
   <div class="fixed inset-x-0 bottom-0 z-40 border-t border-neutral-200 bg-white">
     <div class="flex">
       <a id="footerWow" href="https://link.coupang.com/a/gU16lCobu0" target="_blank" rel="noopener sponsored" class="flex-1 py-2 text-center text-[11px] font-medium tracking-wide text-black">로켓와우</a>
