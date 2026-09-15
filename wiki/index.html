@@ -24,6 +24,7 @@
         <a href="../" class="pb-1 text-neutral-400 hover:text-black">서핑용품</a>
         <a id="navGear" href="./" class="pb-1 text-neutral-400 hover:text-black">용품가이드</a>
         <a id="navSurf" href="./?cat=서핑 입문" class="pb-1 text-neutral-400 hover:text-black">서핑가이드</a>
+        <span id="visitCount" hidden aria-hidden="true" class="ml-auto shrink-0 self-center text-[11px] font-medium tracking-wide text-neutral-400 tabular-nums"></span>
       </nav>
     </div>
   </header>
@@ -148,5 +149,6 @@
       return String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[char]));
     }
   </script>
+  <script src="../visits.js"></script>
 </body>
 </html>

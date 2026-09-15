@@ -127,4 +127,10 @@
     $('content').innerHTML = '<p><a href="./">가이드 목록으로</a></p>';
     $('tocBox').classList.add('hidden');
   });
+  if (!document.getElementById('visit-counter-script')) {
+    const script = document.createElement('script');
+    script.id = 'visit-counter-script';
+    script.src = '../visits.js';
+    document.body.appendChild(script);
+  }
 })();
