@@ -1,16 +1,5 @@
 [
   {
-    "id": 1,
-    "category": "리쉬/안전",
-    "description": "보드와 몸을 지키는 리쉬와 안전 용품입니다.",
-    "product": {
-      "title": "리쉬/안전 추천",
-      "coupangUrl": "https://link.coupang.com/a/gTu59DgJvE",
-      "imageUrl": "./images/products/product-001.svg",
-      "productId": "9572495543"
-    }
-  },
-  {
     "id": 2,
     "category": "액세서리",
     "description": "세션을 편하게 만드는 작은 용품입니다.",
@@ -33,17 +22,6 @@
     }
   },
   {
-    "id": 4,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 4",
-      "coupangUrl": "https://link.coupang.com/a/gTvbMJhQbI",
-      "imageUrl": "./images/products/product-004.svg",
-      "productId": "9586817971"
-    }
-  },
-  {
     "id": 5,
     "category": "액세서리",
     "description": "세션을 편하게 만드는 작은 용품입니다.",
@@ -52,17 +30,6 @@
       "coupangUrl": "https://link.coupang.com/a/gTvckUbRBY",
       "imageUrl": "./images/products/product-005.jpg",
       "productId": "8223017729"
-    }
-  },
-  {
-    "id": 6,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 6",
-      "coupangUrl": "https://link.coupang.com/a/gTvcV7B6aG",
-      "imageUrl": "./images/products/product-006.svg",
-      "productId": "9589895080"
     }
   },
   {
@@ -96,17 +63,6 @@
       "coupangUrl": "https://link.coupang.com/a/gTveSpojsa",
       "imageUrl": "./images/products/product-009.jpg",
       "productId": "9280617417"
-    }
-  },
-  {
-    "id": 12,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 12",
-      "coupangUrl": "https://link.coupang.com/a/gTvg0q1xCe",
-      "imageUrl": "./images/products/product-012.svg",
-      "productId": "9678873374"
     }
   },
   {
@@ -242,28 +198,6 @@
     }
   },
   {
-    "id": 28,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 28",
-      "coupangUrl": "https://link.coupang.com/a/gTvsuVoYrA",
-      "imageUrl": "./images/products/product-028.svg",
-      "productId": "6395834638"
-    }
-  },
-  {
-    "id": 29,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 29",
-      "coupangUrl": "https://link.coupang.com/a/gTvtl31wC4",
-      "imageUrl": "./images/products/product-029.svg",
-      "productId": "9677790300"
-    }
-  },
-  {
     "id": 30,
     "category": "가방/캐리어",
     "description": "이동과 보관 때 보드를 보호하는 가방입니다.",
@@ -363,28 +297,6 @@
     }
   },
   {
-    "id": 41,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 41",
-      "coupangUrl": "https://link.coupang.com/a/gTvDnvGM1I",
-      "imageUrl": "./images/products/product-041.svg",
-      "productId": "9653178617"
-    }
-  },
-  {
-    "id": 42,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 42",
-      "coupangUrl": "https://link.coupang.com/a/gTvEiUzTjg",
-      "imageUrl": "./images/products/product-042.svg",
-      "productId": "9671672386"
-    }
-  },
-  {
     "id": 43,
     "category": "슈트/래시가드",
     "description": "계절과 수온에 맞춘 보온·자외선 차단 용품입니다.",
@@ -451,94 +363,6 @@
     }
   },
   {
-    "id": 49,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 49",
-      "coupangUrl": "https://link.coupang.com/a/gTvL0iw2PQ",
-      "imageUrl": "./images/products/product-049.svg",
-      "productId": "9423231677"
-    }
-  },
-  {
-    "id": 50,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 50",
-      "coupangUrl": "https://link.coupang.com/a/gTvMA0FQv6",
-      "imageUrl": "./images/products/product-050.svg",
-      "productId": "9619958338"
-    }
-  },
-  {
-    "id": 51,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 51",
-      "coupangUrl": "https://link.coupang.com/a/gTvM8m7O9Y",
-      "imageUrl": "./images/products/product-051.svg",
-      "productId": "8323125150"
-    }
-  },
-  {
-    "id": 52,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 52",
-      "coupangUrl": "https://link.coupang.com/a/gTvNI6aYNM",
-      "imageUrl": "./images/products/product-052.svg",
-      "productId": "9423228669"
-    }
-  },
-  {
-    "id": 53,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 53",
-      "coupangUrl": "https://link.coupang.com/a/gTvOh5c0zc",
-      "imageUrl": "./images/products/product-053.svg",
-      "productId": "9492167115"
-    }
-  },
-  {
-    "id": 54,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 54",
-      "coupangUrl": "https://link.coupang.com/a/gTvOSQxW3g",
-      "imageUrl": "./images/products/product-054.svg",
-      "productId": "9021083742"
-    }
-  },
-  {
-    "id": 55,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "더넥스트 스파크 트렁크 선반 고정클립 P",
-      "coupangUrl": "https://link.coupang.com/a/gTvPvOY9mu",
-      "imageUrl": "./images/products/product-055.svg",
-      "productId": "9627226444"
-    }
-  },
-  {
-    "id": 56,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "에버라스트 남성 여성 매쉬 스포츠 샌들 다이얼 멀티화 아쿠아 워터 여름 운동화 런닝화 러닝화 골프 트레킹화 논슬립 슈즈54I,400무료반품",
-      "coupangUrl": "https://link.coupang.com/a/gU5Dy9217c",
-      "imageUrl": "./images/products/product-056.jpg",
-      "productId": "7412726131"
-    }
-  },
-  {
     "id": 57,
     "category": "기타",
     "description": "서핑에 유용한 추천 용품입니다.",
@@ -594,28 +418,6 @@
     }
   },
   {
-    "id": 64,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 64",
-      "coupangUrl": "https://link.coupang.com/a/gTvYoYjL3c",
-      "imageUrl": "./images/products/product-064.svg",
-      "productId": "6482915949"
-    }
-  },
-  {
-    "id": 65,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "현대 싼타페 베라크루즈 2007-2012용 헬릭스 에어리얼 폴 안테나 962002B000 96200 2B",
-      "coupangUrl": "https://link.coupang.com/a/gTvZlk7iQm",
-      "imageUrl": "./images/products/product-065.svg",
-      "productId": "9626607488"
-    }
-  },
-  {
     "id": 66,
     "category": "액세서리",
     "description": "세션을 편하게 만드는 작은 용품입니다.",
@@ -624,72 +426,6 @@
       "coupangUrl": "https://link.coupang.com/a/gTvZXHa51w",
       "imageUrl": "./images/products/product-066.jpg",
       "productId": "5766886818"
-    }
-  },
-  {
-    "id": 67,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 67",
-      "coupangUrl": "https://link.coupang.com/a/gTv09OseYe",
-      "imageUrl": "./images/products/product-067.svg",
-      "productId": "7650582881"
-    }
-  },
-  {
-    "id": 68,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 68",
-      "coupangUrl": "https://link.coupang.com/a/gTv2JDxleK",
-      "imageUrl": "./images/products/product-068.svg",
-      "productId": "30000011493639"
-    }
-  },
-  {
-    "id": 69,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 69",
-      "coupangUrl": "https://link.coupang.com/a/gTv5EJphDM",
-      "imageUrl": "./images/products/product-069.svg",
-      "productId": "30000011493719"
-    }
-  },
-  {
-    "id": 70,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 70",
-      "coupangUrl": "https://link.coupang.com/a/gTv6ls7ciG",
-      "imageUrl": "./images/products/product-070.svg",
-      "productId": "30000002580978"
-    }
-  },
-  {
-    "id": 71,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 71",
-      "coupangUrl": "https://link.coupang.com/a/gTv6VkSjRs",
-      "imageUrl": "./images/products/product-071.svg",
-      "productId": "30000010130864"
-    }
-  },
-  {
-    "id": 72,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 72",
-      "coupangUrl": "https://link.coupang.com/a/gTv7KcNSBE",
-      "imageUrl": "./images/products/product-072.svg",
-      "productId": "30000002587001"
     }
   },
   {
@@ -715,39 +451,6 @@
     }
   },
   {
-    "id": 75,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 75",
-      "coupangUrl": "https://link.coupang.com/a/gTwfqel7qm",
-      "imageUrl": "./images/products/product-075.svg",
-      "productId": "30000011409957"
-    }
-  },
-  {
-    "id": 76,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 76",
-      "coupangUrl": "https://link.coupang.com/a/gTwfZepuPA",
-      "imageUrl": "./images/products/product-076.svg",
-      "productId": "8916583222"
-    }
-  },
-  {
-    "id": 77,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "자동차용 OE 11237797995 30731045 A2710300003 11238512072 11238638614",
-      "coupangUrl": "https://link.coupang.com/a/gTwgyIuNsi",
-      "imageUrl": "./images/products/product-077.svg",
-      "productId": "30000011254624"
-    }
-  },
-  {
     "id": 79,
     "category": "보드/핀",
     "description": "체중과 실력에 맞춰 고른 보드와 핀입니다.",
@@ -756,39 +459,6 @@
       "coupangUrl": "https://link.coupang.com/a/gTwihcrpLw",
       "imageUrl": "./images/products/product-079.jpg",
       "productId": "9535320387"
-    }
-  },
-  {
-    "id": 80,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 80",
-      "coupangUrl": "https://link.coupang.com/a/gTwi0i73uK",
-      "imageUrl": "./images/products/product-080.svg",
-      "productId": "6431142266"
-    }
-  },
-  {
-    "id": 81,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 81",
-      "coupangUrl": "https://link.coupang.com/a/gTwjLsDSZE",
-      "imageUrl": "./images/products/product-081.svg",
-      "productId": "9712411988"
-    }
-  },
-  {
-    "id": 82,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 82",
-      "coupangUrl": "https://link.coupang.com/a/gTwkEFUhFI",
-      "imageUrl": "./images/products/product-082.svg",
-      "productId": "30000011448972"
     }
   },
   {
@@ -814,94 +484,6 @@
     }
   },
   {
-    "id": 86,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 86",
-      "coupangUrl": "https://link.coupang.com/a/gTwozZxWwu",
-      "imageUrl": "./images/products/product-086.svg",
-      "productId": "30000011341800"
-    }
-  },
-  {
-    "id": 87,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 87",
-      "coupangUrl": "https://link.coupang.com/a/gTwpcDangi",
-      "imageUrl": "./images/products/product-087.svg",
-      "productId": "30000011470675"
-    }
-  },
-  {
-    "id": 88,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 88",
-      "coupangUrl": "https://link.coupang.com/a/gTwpQWPBfM",
-      "imageUrl": "./images/products/product-088.svg",
-      "productId": "100000007243"
-    }
-  },
-  {
-    "id": 89,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 89",
-      "coupangUrl": "https://link.coupang.com/a/gTwqCapOr6",
-      "imageUrl": "./images/products/product-089.svg",
-      "productId": "30000000932599"
-    }
-  },
-  {
-    "id": 90,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 90",
-      "coupangUrl": "https://link.coupang.com/a/gTwricLEAe",
-      "imageUrl": "./images/products/product-090.svg",
-      "productId": "30000000548602"
-    }
-  },
-  {
-    "id": 91,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 91",
-      "coupangUrl": "https://link.coupang.com/a/gTwrTzn6bs",
-      "imageUrl": "./images/products/product-091.svg",
-      "productId": "30000011202839"
-    }
-  },
-  {
-    "id": 92,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 92",
-      "coupangUrl": "https://link.coupang.com/a/gTwsy0H2I0",
-      "imageUrl": "./images/products/product-092.svg",
-      "productId": "30000000538922"
-    }
-  },
-  {
-    "id": 93,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 93",
-      "coupangUrl": "https://link.coupang.com/a/gTwtlwwJQ4",
-      "imageUrl": "./images/products/product-093.svg",
-      "productId": "100000021364"
-    }
-  },
-  {
     "id": 95,
     "category": "기타",
     "description": "서핑에 유용한 추천 용품입니다.",
@@ -913,28 +495,6 @@
     }
   },
   {
-    "id": 97,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천 97",
-      "coupangUrl": "https://link.coupang.com/a/gTwxGin7Uy",
-      "imageUrl": "./images/products/product-097.svg",
-      "productId": "9721826005"
-    }
-  },
-  {
-    "id": 98,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "커넥터 배선 88959-03114AS 순정품 8895903114AS",
-      "coupangUrl": "https://link.coupang.com/a/gTwyjAjA7w",
-      "imageUrl": "./images/products/product-098.svg",
-      "productId": "9049930140"
-    }
-  },
-  {
     "id": 99,
     "category": "리쉬/안전",
     "description": "보드와 몸을 지키는 리쉬와 안전 용품입니다.",
@@ -943,17 +503,6 @@
       "coupangUrl": "https://link.coupang.com/a/gTwyWIo9QW",
       "imageUrl": "./images/products/product-099.jpg",
       "productId": "84950741"
-    }
-  },
-  {
-    "id": 166,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "서핑 용품 추천",
-      "coupangUrl": "https://link.coupang.com/a/g2dLNtQlX2",
-      "imageUrl": "./images/products/product-166.jpg",
-      "productId": "8873183605"
     }
   },
   {
@@ -1122,17 +671,6 @@
     }
   },
   {
-    "id": 124,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "카니발 24 KA4 스마트키95440R0850 81996P2800 보조키 포함",
-      "coupangUrl": "https://link.coupang.com/a/g2diEfwWCy",
-      "imageUrl": "./images/products/product-124.svg",
-      "productId": "9479713461"
-    }
-  },
-  {
     "id": 126,
     "category": "왁스/그립",
     "description": "미끄럼을 줄이는 왁스와 덱패드입니다.",
@@ -1218,17 +756,6 @@
       "coupangUrl": "https://link.coupang.com/a/g2doQQ4376",
       "imageUrl": "./images/products/product-135.jpg",
       "productId": "8680095874"
-    }
-  },
-  {
-    "id": 136,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "수입차 벤츠 에어필터 C14114 WA9443 49214 E472L CA9680",
-      "coupangUrl": "https://link.coupang.com/a/g2dpJkKsjQ",
-      "imageUrl": "./images/products/product-136.svg",
-      "productId": "9414685924"
     }
   },
   {
@@ -1320,17 +847,6 @@
     }
   },
   {
-    "id": 159,
-    "category": "기타",
-    "description": "서핑에 유용한 추천 용품입니다.",
-    "product": {
-      "title": "르노삼성, QM6 도어 어셈블리-프론트 우, 조수석앞도어, 조수석후도어, 중고, 판금도색 필수, 801006107R, 801009510R. 801005876R.",
-      "coupangUrl": "https://link.coupang.com/a/g2dHNKznI4",
-      "imageUrl": "./images/products/product-159.svg",
-      "productId": "8067602555"
-    }
-  },
-  {
     "id": 165,
     "category": "기타",
     "description": "서핑에 유용한 추천 용품입니다.",
@@ -1339,6 +855,17 @@
       "coupangUrl": "https://link.coupang.com/a/g2dKUOVp1M",
       "imageUrl": "./images/products/product-165.jpg",
       "productId": "9260970585"
+    }
+  },
+  {
+    "id": 166,
+    "category": "기타",
+    "description": "서핑에 유용한 추천 용품입니다.",
+    "product": {
+      "title": "서핑 용품 추천",
+      "coupangUrl": "https://link.coupang.com/a/g2dLNtQlX2",
+      "imageUrl": "./images/products/product-166.jpg",
+      "productId": "8873183605"
     }
   },
   {

@@ -102,7 +102,6 @@
   </div>
   <script>
     const CATEGORIES = ['보드/핀', '슈트/래시가드', '왁스/그립', '리쉬/안전', '가방/캐리어', '관리/수리', '액세서리', '기타'];
-    const PLACEHOLDER = './images/placeholder.svg';
     const PAGE_SIZE = 30;
     const ORDER_KEY = 'surfwiki-product-order';
     const state = { products: [], category: '전체', page: 1 };
@@ -120,15 +119,21 @@
       if (!response.ok) throw new Error('상품 데이터 응답 오류');
       return response.json();
     }).then(products => {
-      state.products = applySessionOrder(uniqueProducts(products).filter(item =>
-        item.product?.imageUrl?.endsWith('.jpg') && !/^서핑 용품 추천 /.test(item.product.title || '')
-      ));
+      state.products = applySessionOrder(uniqueProducts(products).filter(isListedProduct));
       renderCategories();
       renderProducts();
     }).catch(error => {
       $('status').textContent = '상품을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.';
       console.error(error);
     });
+    function isListedProduct(item) {
+      return item.product?.imageUrl?.endsWith('.jpg') && !/^서핑 용품 추천 /.test(item.product.title || '');
+    }
+    function hideBrokenImage(img) {
+      img.onerror = null;
+      const card = img.closest('a');
+      if (card) card.remove();
+    }
     function uniqueProducts(list) {
       const seen = new Set();
       return list.filter(item => {
@@ -267,12 +272,12 @@
         : state.category === '전체'
           ? '표시할 상품이 없습니다.'
           : `${state.category} 상품이 없습니다.`;
-      $('productGrid').innerHTML = pageItems.map(item => `<a href="${escapeHtml(item.product.coupangUrl)}" target="_blank" rel="noopener sponsored" class="text-left"><img src="${escapeHtml(item.product.imageUrl)}" alt="${escapeHtml(item.product.title)}" class="aspect-square w-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='${PLACEHOLDER}'"><div class="pt-2"><span class="text-[10px] font-medium tracking-wide text-neutral-400">${escapeHtml(item.category || '추천')}</span><h2 class="mt-1 line-clamp-2 text-[12px] font-medium leading-5">${escapeHtml(item.product.title)}</h2><p class="mt-1 line-clamp-2 text-[11px] leading-4 text-neutral-500">${escapeHtml(item.description || item.product.description || '서핑을 위한 추천 용품')}</p></div></a>`).join('');
+      $('productGrid').innerHTML = pageItems.map(item => `<a href="${escapeHtml(item.product.coupangUrl)}" target="_blank" rel="noopener sponsored" class="text-left"><img src="${escapeHtml(item.product.imageUrl)}" alt="${escapeHtml(item.product.title)}" class="aspect-square w-full object-cover" loading="lazy" onerror="hideBrokenImage(this)"><div class="pt-2"><span class="text-[10px] font-medium tracking-wide text-neutral-400">${escapeHtml(item.category || '추천')}</span><h2 class="mt-1 line-clamp-2 text-[12px] font-medium leading-5">${escapeHtml(item.product.title)}</h2><p class="mt-1 line-clamp-2 text-[11px] leading-4 text-neutral-500">${escapeHtml(item.description || item.product.description || '서핑을 위한 추천 용품')}</p></div></a>`).join('');
       renderPagination(products.length);
     }
     function openModal(item) {
       $('modalCategory').textContent = item.category || '추천';
-      $('modalImage').onerror = function () { this.onerror = null; this.src = PLACEHOLDER; };
+      $('modalImage').onerror = function () { hideBrokenImage(this); };
       $('modalImage').src = item.product.imageUrl;
       $('modalImage').alt = item.product.title;
       $('modalTitle').textContent = item.product.title;

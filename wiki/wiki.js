@@ -1,6 +1,5 @@
 (function () {
   const $ = id => document.getElementById(id);
-  const PLACEHOLDER = '../images/placeholder.svg';
   const SURF_CAT = '서핑 입문';
   function articleSlug() {
     const last = (location.pathname.split('/').filter(Boolean).pop() || '').replace(/\.html$/, '');
@@ -117,7 +116,7 @@
       $('related').classList.remove('hidden');
       $('relatedGroups').innerHTML = groups.map(group =>
         `<div><h3 class="mb-3 text-[12px] font-medium tracking-wide text-neutral-400">${escapeHtml(group.category)}</h3><div class="grid grid-cols-2 gap-x-3 gap-y-6 sm:grid-cols-4">${group.items.map(item =>
-          `<a href="${escapeHtml(item.product.coupangUrl)}" target="_blank" rel="noopener sponsored" class="text-left"><img src="${escapeHtml(imageSrc(item))}" alt="${escapeHtml(item.product.title)}" class="aspect-square w-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='${PLACEHOLDER}'"><div class="pt-2"><span class="text-[10px] font-medium tracking-wide text-neutral-400">${escapeHtml(item.category || '추천')}</span><h3 class="mt-1 line-clamp-2 text-[12px] font-medium leading-5">${escapeHtml(item.product.title)}</h3><p class="mt-1 line-clamp-2 text-[11px] leading-4 text-neutral-500">${escapeHtml(item.description || item.product.description || '서핑을 위한 추천 용품')}</p></div></a>`
+          `<a href="${escapeHtml(item.product.coupangUrl)}" target="_blank" rel="noopener sponsored" class="text-left"><img src="${escapeHtml(imageSrc(item))}" alt="${escapeHtml(item.product.title)}" class="aspect-square w-full object-cover" loading="lazy" onerror="this.onerror=null;this.closest('a')&&this.closest('a').remove();"><div class="pt-2"><span class="text-[10px] font-medium tracking-wide text-neutral-400">${escapeHtml(item.category || '추천')}</span><h3 class="mt-1 line-clamp-2 text-[12px] font-medium leading-5">${escapeHtml(item.product.title)}</h3><p class="mt-1 line-clamp-2 text-[11px] leading-4 text-neutral-500">${escapeHtml(item.description || item.product.description || '서핑을 위한 추천 용품')}</p></div></a>`
         ).join('')}</div></div>`
       ).join('');
     });
