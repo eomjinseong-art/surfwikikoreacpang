@@ -1,5 +1,11 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import {
+  isUsableImageBuffer,
+  isUsableImageFile,
+  isUsableProductItem,
+  productJpgPath
+} from './product-image.mjs';
 
 const repo = process.cwd();
 const sheetUrl = 'https://docs.google.com/spreadsheets/d/1mEVtl-VkfA0nzFCS-w9KuZGnA0tyZP2A-MkG_M928Hg/gviz/tq?tqx=out:csv&sheet=%EA%B4%91%EA%B3%A0%EC%9A%A9';
@@ -8,6 +14,26 @@ const productsPath = path.join(repo, 'data', 'products.json');
 const sheetExportPath = path.join(repo, 'data', 'sheet-update.csv');
 const maxProducts = Number(process.env.MAX_PRODUCTS || 0);
 const delayMs = Number(process.env.DELAY_MS || 1200);
+const catalogOnly = process.argv.includes('--catalog-only');
+const appsScriptUrl = 'https://script.google.com/macros/s/AKfycby15kafTWWfWOZLWC74H6-CZkmrcGOUnXTjXUnR9iFTAh8uas9OF_VaH4WuOO7C3FE2cg/exec';
+const flagsPath = path.join(repo, 'data', 'sheet-flags.json');
+const failedPath = path.join(repo, 'data', 'scrape-failed.json');
+const existing = await loadExistingProducts();
+const failed = await loadFailedIds();
+
+if (catalogOnly) {
+  const current = [...existing.values()].sort((a, b) => a.id - b.id);
+  const kept = [];
+  const missing = [];
+  for (const item of current) {
+    if (await isUsableProductItem(repo, item)) kept.push(item);
+    else missing.push(item.id);
+  }
+  await saveSiteProducts(kept, missing, []);
+  await notifyGoogleSheet(missing, []);
+  console.log(`이미지 없음 ${missing.length}개 제외, 남은 상품 ${kept.length}개`);
+  process.exit(0);
+}
 
 await fs.mkdir(imageDir, { recursive: true });
 
@@ -20,19 +46,6 @@ const categoryIndex = firstIndex(index, ['상황 태그', '카테고리']);
 const titleIndex = firstIndex(index, ['상품명', '실제 상품명']);
 const imageIndex = firstIndex(index, ['상품 이미지 url', '이미지 url']);
 const descriptionIndex = firstIndex(index, ['상품 한줄설명', '상품 설명']);
-
-const catalogOnly = process.argv.includes('--catalog-only');
-const appsScriptUrl = 'https://script.google.com/macros/s/AKfycby15kafTWWfWOZLWC74H6-CZkmrcGOUnXTjXUnR9iFTAh8uas9OF_VaH4WuOO7C3FE2cg/exec';
-const flagsPath = path.join(repo, 'data', 'sheet-flags.json');
-const failedPath = path.join(repo, 'data', 'scrape-failed.json');
-const existing = await loadExistingProducts();
-const failed = await loadFailedIds();
-
-if (catalogOnly) {
-  const current = [...existing.values()].sort((a, b) => a.id - b.id);
-  await finalizeCatalog(current);
-  process.exit(0);
-}
 
 const products = [];
 const seen = new Set();
@@ -51,10 +64,11 @@ for (const row of rows.slice(1)) {
   let remoteImageUrl = (row[imageIndex] || '').trim();
   const sheetCategory = (row[categoryIndex] || '').replace(/^#/, '').trim();
   const sheetDescription = (row[descriptionIndex] || '').trim();
-  const jpgPath = path.join(imageDir, `product-${String(id).padStart(3, '0')}.jpg`);
+  const jpgPath = productJpgPath(repo, id);
   const hasJpg = await fileExists(jpgPath);
+  const jpgUsable = hasJpg && await isUsableImageFile(jpgPath);
   const needsTitle = linkChanged || !title || isFallbackTitle(title, id) || isWeakTitle(title);
-  const needsImage = !hasJpg;
+  const needsImage = !jpgUsable;
 
   let didScrape = false;
   if (needsImage || needsTitle) {
@@ -74,9 +88,9 @@ for (const row of rows.slice(1)) {
       : `서핑 용품 추천 ${id}`;
   }
 
-  let imageUrl = hasJpg
+  let imageUrl = jpgUsable
     ? `./images/products/product-${String(id).padStart(3, '0')}.jpg`
-    : `./images/products/product-${String(id).padStart(3, '0')}.svg`;
+    : '';
 
   if (needsImage && remoteImageUrl && !remoteImageUrl.startsWith('./')) {
     const saved = await downloadImage(remoteImageUrl, jpgPath, id);
@@ -84,9 +98,9 @@ for (const row of rows.slice(1)) {
     else failed.add(id);
   }
 
-  if (imageUrl.endsWith('.svg')) {
-    const svgPath = path.join(imageDir, `product-${String(id).padStart(3, '0')}.svg`);
-    if (!(await fileExists(svgPath))) await fs.writeFile(svgPath, fallbackImage(id));
+  if (!(imageUrl.endsWith('.jpg') && await isUsableImageFile(jpgPath))) {
+    failed.add(id);
+    imageUrl = '';
   }
 
   const category = classifyCategory(sheetCategory || previous?.category || '', title);
@@ -105,7 +119,7 @@ for (const row of rows.slice(1)) {
   });
 
   if (didScrape || products.length % 15 === 0) await saveOutputs(products);
-  const status = imageUrl.endsWith('.jpg') ? '사진' : '임시그림';
+  const status = imageUrl.endsWith('.jpg') ? '사진' : '이미지없음';
   console.log(`[${products.length}] ${id} ${status} ${title}`);
   if (didScrape) await sleep(delayMs);
 }
@@ -113,8 +127,7 @@ for (const row of rows.slice(1)) {
 await saveOutputs(products);
 await fs.writeFile(failedPath, `${JSON.stringify([...failed].sort((a, b) => a - b), null, 2)}\n`);
 const finalized = await finalizeCatalog(products.sort((a, b) => a.id - b.id));
-const jpgCount = finalized.filter(item => item.product.imageUrl.endsWith('.jpg')).length;
-console.log(`상품 ${finalized.length}개 동기화 완료. 실제 사진 ${jpgCount}개, 임시 그림 ${finalized.length - jpgCount}개.`);
+console.log(`상품 ${finalized.length}개 동기화 완료. 사진 없는 상품은 목록에서 제외했습니다.`);
 console.log(`시트 붙여넣기 파일: ${path.relative(repo, sheetExportPath)}`);
 
 async function finalizeCatalog(list) {
@@ -133,19 +146,23 @@ async function finalizeCatalog(list) {
     };
   });
 
+  const withPhoto = [];
+  const missing = [];
   for (const item of classified) {
+    if (await isUsableProductItem(repo, item)) withPhoto.push(item);
+    else missing.push(item.id);
+  }
+
+  for (const item of withPhoto) {
     if (item.product.productId) continue;
     item.product.productId = await resolveProductId(item.product.coupangUrl);
     await sleep(120);
   }
 
-  const { kept, duplicates } = dedupeProducts(classified);
-  const missing = kept
-    .filter(item => !item.product.imageUrl.endsWith('.jpg'))
-    .map(item => item.id);
+  const { kept, duplicates } = dedupeProducts(withPhoto);
   await saveSiteProducts(kept, missing, duplicates);
   await notifyGoogleSheet(missing, duplicates);
-  console.log(`중복 ${duplicates.length}개 삭제, 이미지 없음 ${missing.length}개 표시`);
+  console.log(`중복 ${duplicates.length}개 삭제, 이미지 없음 ${missing.length}개 제외`);
   return kept;
 }
 
@@ -158,7 +175,7 @@ function dedupeProducts(list) {
   for (const item of list) {
     const productId = item.product.productId || '';
     const title = item.product.title || '';
-    const titleKey = isFallbackTitle(title, item.id) || isJunkTitle(title) ? '' : title;
+    const titleKey = isFallbackTitle(title, item.id) || /^서핑 용품 추천/.test(title) || isJunkTitle(title) ? '' : title;
     const prev = (productId && seenProduct.get(productId)) || (titleKey && seenTitle.get(titleKey));
     if (!prev) {
       kept.push(item);
@@ -192,7 +209,7 @@ async function saveSiteProducts(list, missing, duplicates) {
     .sort((a, b) => a - b);
   const mergedMissing = [...new Set([
     ...missing,
-    ...(previousFlags.missing || []).filter(id => !list.some(item => item.id === id && item.product.imageUrl.endsWith('.jpg')))
+    ...(previousFlags.missing || []).filter(id => !list.some(item => item.id === id))
   ])].sort((a, b) => a - b);
   const siteProducts = list.map(({ id, category, description, product }) => ({
     id,
@@ -335,7 +352,7 @@ async function downloadImage(imageUrl, jpgPath, id) {
     });
     if (!response.ok) return false;
     const imageBody = Buffer.from(await response.arrayBuffer());
-    if (!imageBody || imageBody.length < 2000) return false;
+    if (!isUsableImageBuffer(imageBody)) return false;
     await fs.writeFile(jpgPath, imageBody);
     return true;
   } catch (error) {
@@ -360,8 +377,13 @@ function requestHeaders() {
 }
 
 async function saveOutputs(list) {
-  const merged = new Map(existing);
-  for (const item of list) merged.set(item.id, item);
+  const merged = new Map();
+  for (const item of existing.values()) {
+    if (await isUsableProductItem(repo, item)) merged.set(item.id, item);
+  }
+  for (const item of list) {
+    if (await isUsableProductItem(repo, item)) merged.set(item.id, item);
+  }
   const ordered = [...merged.values()].sort((a, b) => a.id - b.id);
   const siteProducts = ordered.map(({ id, category, description, product }) => ({
     id,
@@ -385,7 +407,7 @@ async function saveOutputs(list) {
       item.product.title,
       item.description,
       item.product.sourceImageUrl || '',
-      item.product.imageUrl.endsWith('.jpg') ? 'GitHub 저장 완료' : '사진 수집 실패'
+      'GitHub 저장 완료'
     ].map(csvCell).join(','))
   ];
   await fs.writeFile(sheetExportPath, `\ufeff${csvLines.join('\n')}\n`);
@@ -510,11 +532,6 @@ function parseCsv(input) {
   row.push(value);
   if (row.some(cell => cell.trim())) rows.push(row);
   return rows;
-}
-
-function fallbackImage(id) {
-  const hue = (id * 37) % 360;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="hsl(${hue},70%,88%)"/><stop offset="1" stop-color="hsl(${(hue + 40) % 360},65%,55%)"/></linearGradient></defs><rect width="800" height="600" fill="url(#g)"/><ellipse cx="400" cy="340" rx="220" ry="70" fill="#fff" opacity=".35"/><path d="M120 360c80-40 160-20 240 10s170 20 250-30" stroke="#0f766e" stroke-width="10" fill="none"/><path d="M280 250l80 90 20-55 20 55 80-90" stroke="#155e75" stroke-width="12" fill="none"/><text x="400" y="535" text-anchor="middle" font-family="sans-serif" font-size="28" font-weight="bold" fill="#134e4a">SURF GOODS ${id}</text></svg>`;
 }
 
 async function fileExists(filePath) {
